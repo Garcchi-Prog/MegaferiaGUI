@@ -10,13 +10,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class MegaferiaFrame extends javax.swing.JFrame {
 
-    private final ProgramController controller;
+    
 
     /**
      * Creates new form MegaferiaFrame
      */
     public MegaferiaFrame() {
-        this.controller = controller;
+        
         initComponents();
         setLocationRelativeTo(null);
 
@@ -1368,7 +1368,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String id = IDStandTextField.getText();
         String priceStr = PrecioStandTextField.getText();
 
-        Response response = controller.crearStand(id, priceStr);
+        Response response = ProgramController.crearStand(id, priceStr);
     }//GEN-LAST:event_CrearStandButtonActionPerformed
 
     private void CrearAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearAutorButtonActionPerformed
@@ -1376,7 +1376,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = controller.registrarAutor(id, firstname, lastname);
+        Response response = ProgramController.registrarAutor(id, firstname, lastname);
     }//GEN-LAST:event_CrearAutorButtonActionPerformed
 
     private void CrearGerenteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearGerenteButtonActionPerformed
@@ -1384,7 +1384,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = controller.registrarGerente(id, firstname, lastname);
+        Response response = ProgramController.registrarGerente(id, firstname, lastname);
 
     }//GEN-LAST:event_CrearGerenteButtonActionPerformed
 
@@ -1393,7 +1393,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = controller.registrarNarrador(id, firstname, lastname);
+        Response response = ProgramController.registrarNarrador(id, firstname, lastname);
     }//GEN-LAST:event_CrearNarradorButtonActionPerformed
 
     private void CrearEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEditorialButtonActionPerformed
@@ -1401,21 +1401,21 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String name = NombreEditorialTextField.getText();
         String address = DireccionEditorialTextField.getText();
         String managerData = (String) GerenteEditorialComboBox.getSelectedItem();
-        Response response = controller.registrarEditorial(nit, name, address, managerData);
+        Response response = ProgramController.registrarEditorial(nit, name, address, managerData);
 
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
 
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
         String autorSeleccionado = (String) AutoresLibroComboBox.getSelectedItem();
         String contenidoActualTextArea = LibroTextArea.getText();
-        Response response = controller.agregarAutorALibroTemp(autorSeleccionado, contenidoActualTextArea);
+        Response response = ProgramController.agregarAutorALibroTemp(autorSeleccionado, contenidoActualTextArea);
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
         String autorEliminar = (String) AutoresLibroComboBox.getSelectedItem();
         String contenidoActualTextArea = LibroTextArea.getText();
 
-        String nuevoContenido = controller.eliminarAutorDeLibroTemp(autorEliminar, contenidoActualTextArea);
+        String nuevoContenido = ProgramController.eliminarAutorDeLibroTemp(autorEliminar, contenidoActualTextArea);
 
         LibroTextArea.setText(nuevoContenido);
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
@@ -1444,7 +1444,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         boolean isDigital = LibroDigitalRadioButton.isSelected();
         boolean isAudiobook = AudioLibroRadioButton.isSelected();
 
-        Response response = controller.registrarLibro(title, authorsContent, isbn, genre, format, valueStr, publisherData,
+        Response response = ProgramController.registrarLibro(title, authorsContent, isbn, genre, format, valueStr, publisherData,
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
     }//GEN-LAST:event_CrearLibroButtonActionPerformed
 
@@ -1452,14 +1452,14 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standSeleccionado = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        Response response = controller.agregarStandACompraTemp(standSeleccionado, contenidoActualTextArea);
+        Response response = ProgramController.agregarStandACompraTemp(standSeleccionado, contenidoActualTextArea);
     }//GEN-LAST:event_AgregarStandComprarButtonActionPerformed
 
     private void EliminarStandComprarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarStandComprarButtonActionPerformed
         String standAEliminar = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        String nuevoContenido = controller.eliminarStandDeCompraTemp(standAEliminar, contenidoActualTextArea);
+        String nuevoContenido = ProgramController.eliminarStandDeCompraTemp(standAEliminar, contenidoActualTextArea);
 
         StandComprarTextArea.setText(nuevoContenido);
     }//GEN-LAST:event_EliminarStandComprarButtonActionPerformed
@@ -1468,14 +1468,14 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String editorialSeleccionada = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        Response response = controller.agregarEditorialACompraTemp(editorialSeleccionada, contenidoActualTextArea);
+        Response response = ProgramController.agregarEditorialACompraTemp(editorialSeleccionada, contenidoActualTextArea);
     }//GEN-LAST:event_AgEditorialComprarStandButtonActionPerformed
 
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        String nuevoContenido = controller.eliminarEditorialDeCompraTemp(editorialAEliminar, contenidoActualTextArea);
+        String nuevoContenido = ProgramController.eliminarEditorialDeCompraTemp(editorialAEliminar, contenidoActualTextArea);
 
         EditorialStandComprarTextArea.setText(nuevoContenido);
     }//GEN-LAST:event_ElEditorialComprarStandButtonActionPerformed
@@ -1484,11 +1484,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standsContent = StandComprarTextArea.getText();
         String publishersContent = EditorialStandComprarTextArea.getText();
 
-        Response response = controller.comprarStands(standsContent, publishersContent);
+        Response response = ProgramController.comprarStands(standsContent, publishersContent);
     }//GEN-LAST:event_ComprarStandButtonActionPerformed
 
     private void ConsultarEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarEditorialButtonActionPerformed
-        ArrayList<Object[]> dataRows = controller.obtenerDatosEditoriales();
+        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosEditoriales();
 
         DefaultTableModel model = (DefaultTableModel) ListaEditorialesTable.getModel();
         model.setRowCount(0);
@@ -1500,7 +1500,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarPersonaButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = controller.obtenerDatosPersonas();
+        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosPersonas();
 
         DefaultTableModel model = (DefaultTableModel) ListaPersonasTable.getModel();
         model.setRowCount(0);
@@ -1512,7 +1512,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarStandButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = controller.obtenerDatosStands();
+        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosStands();
 
         DefaultTableModel model = (DefaultTableModel) ListaStandsTable.getModel();
         model.setRowCount(0); 
@@ -1526,7 +1526,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String searchCriteria = (String) LibroSeleccionarComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = controller.obtenerDatosLibros(searchCriteria);
+        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosLibros(searchCriteria);
 
         DefaultTableModel model = (DefaultTableModel) ListaLibrosTable.getModel();
         model.setRowCount(0);
@@ -1540,7 +1540,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String autorData = (String) AutorConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = controller.obtenerLibrosPorAutor(autorData);
+        ArrayList<Object[]> dataRows = ProgramController.obtenerLibrosPorAutor(autorData);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1554,7 +1554,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String searchFormat = (String) FormatoConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = controller.obtenerLibrosPorFormato(searchFormat);
+        ArrayList<Object[]> dataRows = ProgramController.obtenerLibrosPorFormato(searchFormat);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1566,7 +1566,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarAutoresMasLibrosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarAutoresMasLibrosButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = controller.obtenerAutoresConMasLibros();
+        ArrayList<Object[]> dataRows = ProgramController.obtenerAutoresConMasLibros();
 
         DefaultTableModel model = (DefaultTableModel) AutoresConMasLibrosConsultaTable.getModel();
         model.setRowCount(0);
