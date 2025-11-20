@@ -1,8 +1,7 @@
-
 package controller.utils;
 
-
 public class Response {
+
     private String message;
     private int status;
     private Object object;
@@ -11,7 +10,7 @@ public class Response {
         this.message = message;
         this.status = status;
     }
-    
+
     public Response(String message, int status, Object object) {
         this.message = message;
         this.status = status;
