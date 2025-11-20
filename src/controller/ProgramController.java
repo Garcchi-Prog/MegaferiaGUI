@@ -41,7 +41,7 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static String deleteStandFromBuy(String standAEliminar, String contenidoActualTextArea) {
+    public static Response deleteStandFromBuy(String standAEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -49,7 +49,7 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static String deletePublisherFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
+    public static Response deletePublisherFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
