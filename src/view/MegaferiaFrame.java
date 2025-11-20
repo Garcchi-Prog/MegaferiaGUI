@@ -1384,7 +1384,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerAutor(id, firstname, lastname);
+        Response response = ProgramController.registerAuthor(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1406,7 +1406,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerGerente(id, firstname, lastname);
+        Response response = ProgramController.registerManager(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1429,7 +1429,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerNarrador(id, firstname, lastname);
+        Response response = ProgramController.registerNarrator(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1452,7 +1452,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String address = DireccionEditorialTextField.getText();
         String managerData = (String) GerenteEditorialComboBox.getSelectedItem();
 
-        Response response = ProgramController.registerEditorial(nit, name, address, managerData);
+        Response response = ProgramController.registerPublisher(nit, name, address, managerData);
 
         if (response.getStatus() >= 500) {
 
@@ -1474,16 +1474,48 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
         String autorSeleccionado = (String) AutoresLibroComboBox.getSelectedItem();
         String contenidoActualTextArea = LibroTextArea.getText();
-        Response response = ProgramController.agregarAutorALibroTemp(autorSeleccionado, contenidoActualTextArea);
+        Response response = ProgramController.addAuthorToBook(autorSeleccionado, contenidoActualTextArea);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            String nuevoContenido = (String) response.getObject();
+            if (nuevoContenido != null) {
+                LibroTextArea.setText(nuevoContenido);
+            }
+
+            AutoresLibroComboBox.setSelectedIndex(0);
+        }
+
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
         String autorEliminar = (String) AutoresLibroComboBox.getSelectedItem();
         String contenidoActualTextArea = LibroTextArea.getText();
 
-        String nuevoContenido = ProgramController.eliminarAutorDeLibroTemp(autorEliminar, contenidoActualTextArea);
+        Response response = ProgramController.DeleteAuthorFromBook(autorEliminar, contenidoActualTextArea);
 
-        LibroTextArea.setText(nuevoContenido);
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            String nuevoContenido = (String) response.getObject();
+            if (nuevoContenido != null) {
+                LibroTextArea.setText(nuevoContenido);
+            }
+
+            AutoresLibroComboBox.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
@@ -1510,22 +1542,48 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         boolean isDigital = LibroDigitalRadioButton.isSelected();
         boolean isAudiobook = AudioLibroRadioButton.isSelected();
 
-        Response response = ProgramController.registerLibro(title, authorsContent, isbn, genre, format, valueStr, publisherData,
+        Response response = ProgramController.registerBook(title, authorsContent, isbn, genre, format, valueStr, publisherData,
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
+
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            TituloLibroTextField.setText("");
+            ISBNLibroTextField.setText("");
+            ValorLibroTextField.setText("");
+            PaginasLibroTextField.setText("");
+            EjemplaresLibroTextField.setText("");
+            HipervinculoLibroTextField.setText("");
+            DuracionLibroTextField.setText("");
+            LibroTextArea.setText("");
+
+            GeneroLibroComboBox.setSelectedIndex(0);
+            FormatoLibroComboBox.setSelectedIndex(0);
+            EditorialLibroComboBox.setSelectedIndex(0);
+            NarradorLibroComboBox.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_CrearLibroButtonActionPerformed
 
     private void AgregarStandComprarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarStandComprarButtonActionPerformed
         String standSeleccionado = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        Response response = ProgramController.agregarStandACompraTemp(standSeleccionado, contenidoActualTextArea);
+        Response response = ProgramController.addStandToBuy(standSeleccionado, contenidoActualTextArea);
+
+        
     }//GEN-LAST:event_AgregarStandComprarButtonActionPerformed
 
     private void EliminarStandComprarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarStandComprarButtonActionPerformed
         String standAEliminar = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        String nuevoContenido = ProgramController.eliminarStandDeCompraTemp(standAEliminar, contenidoActualTextArea);
+        String nuevoContenido = ProgramController.deleteStandFromBuy(standAEliminar, contenidoActualTextArea);
 
         StandComprarTextArea.setText(nuevoContenido);
     }//GEN-LAST:event_EliminarStandComprarButtonActionPerformed
@@ -1534,14 +1592,14 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String editorialSeleccionada = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        Response response = ProgramController.agregarEditorialACompraTemp(editorialSeleccionada, contenidoActualTextArea);
+        Response response = ProgramController.addPublisherToBuy(editorialSeleccionada, contenidoActualTextArea);
     }//GEN-LAST:event_AgEditorialComprarStandButtonActionPerformed
 
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        String nuevoContenido = ProgramController.eliminarEditorialDeCompraTemp(editorialAEliminar, contenidoActualTextArea);
+        String nuevoContenido = ProgramController.deletePublisherFromBuy(editorialAEliminar, contenidoActualTextArea);
 
         EditorialStandComprarTextArea.setText(nuevoContenido);
     }//GEN-LAST:event_ElEditorialComprarStandButtonActionPerformed
@@ -1550,7 +1608,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standsContent = StandComprarTextArea.getText();
         String publishersContent = EditorialStandComprarTextArea.getText();
 
-        Response response = ProgramController.comprarStands(standsContent, publishersContent);
+        Response response = ProgramController.buyStand(standsContent, publishersContent);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1567,7 +1625,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarStandButtonActionPerformed
 
     private void ConsultarEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarEditorialButtonActionPerformed
-        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosEditoriales();
+        ArrayList<Object[]> dataRows = ProgramController.getPublisherData();
 
         DefaultTableModel model = (DefaultTableModel) ListaEditorialesTable.getModel();
         model.setRowCount(0);
@@ -1579,7 +1637,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarPersonaButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosPersonas();
+        ArrayList<Object[]> dataRows = ProgramController.getPersonData();
 
         DefaultTableModel model = (DefaultTableModel) ListaPersonasTable.getModel();
         model.setRowCount(0);
@@ -1591,7 +1649,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarStandButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosStands();
+        ArrayList<Object[]> dataRows = ProgramController.getStandData();
 
         DefaultTableModel model = (DefaultTableModel) ListaStandsTable.getModel();
         model.setRowCount(0);
@@ -1605,7 +1663,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String searchCriteria = (String) LibroSeleccionarComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerDatosLibros(searchCriteria);
+        ArrayList<Object[]> dataRows = ProgramController.getBookData(searchCriteria);
 
         DefaultTableModel model = (DefaultTableModel) ListaLibrosTable.getModel();
         model.setRowCount(0);

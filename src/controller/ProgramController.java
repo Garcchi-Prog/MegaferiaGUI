@@ -9,67 +9,67 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response registerAutor(String id, String firstname, String lastname) {
+    public static Response registerAuthor(String id, String firstname, String lastname) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response registerGerente(String id, String firstname, String lastname) {
+    public static Response registerManager(String id, String firstname, String lastname) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response registerNarrador(String id, String firstname, String lastname) {
+    public static Response registerNarrator(String id, String firstname, String lastname) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response registerEditorial(String nit, String name, String address, String managerData) {
+    public static Response registerPublisher(String nit, String name, String address, String managerData) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response agregarAutorALibroTemp(String autorSeleccionado, String contenidoActualTextArea) {
+    public static Response addAuthorToBook(String autorSeleccionado, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static String eliminarAutorDeLibroTemp(String autorEliminar, String contenidoActualTextArea) {
+    public static Response DeleteAuthorFromBook(String autorEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response registerLibro(String title, String authorsContent, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
+    public static Response registerBook(String title, String authorsContent, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response agregarStandACompraTemp(String standSeleccionado, String contenidoActualTextArea) {
+    public static Response addStandToBuy(String standSeleccionado, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static String eliminarStandDeCompraTemp(String standAEliminar, String contenidoActualTextArea) {
+    public static String deleteStandFromBuy(String standAEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response agregarEditorialACompraTemp(String editorialSeleccionada, String contenidoActualTextArea) {
+    public static Response addPublisherToBuy(String editorialSeleccionada, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static String eliminarEditorialDeCompraTemp(String editorialAEliminar, String contenidoActualTextArea) {
+    public static String deletePublisherFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response comprarStands(String standsContent, String publishersContent) {
+    public static Response buyStand(String standsContent, String publishersContent) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static ArrayList<Object[]> obtenerDatosEditoriales() {
+    public static ArrayList<Object[]> getPublisherData() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static ArrayList<Object[]> obtenerDatosPersonas() {
+    public static ArrayList<Object[]> getPersonData() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static ArrayList<Object[]> obtenerDatosStands() {
+    public static ArrayList<Object[]> getStandData() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static ArrayList<Object[]> obtenerDatosLibros(String searchCriteria) {
+    public static ArrayList<Object[]> getBookData(String searchCriteria) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
