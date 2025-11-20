@@ -5,24 +5,22 @@ import controller.ProgramController;
 import controller.utils.Response;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class MegaferiaFrame extends javax.swing.JFrame {
 
-    
-
     /**
      * Creates new form MegaferiaFrame
      */
     public MegaferiaFrame() {
-        
+
         initComponents();
         setLocationRelativeTo(null);
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1366,9 +1364,22 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void CrearStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearStandButtonActionPerformed
         String id = IDStandTextField.getText();
-        String priceStr = PrecioStandTextField.getText();
+        String price = PrecioStandTextField.getText();
 
-        Response response = ProgramController.crearStand(id, priceStr);
+        Response response = ProgramController.crearStand(id, price);
+
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            IDStandTextField.setText("");
+            PrecioStandTextField.setText("");
+        }
+
+
     }//GEN-LAST:event_CrearStandButtonActionPerformed
 
     private void CrearAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearAutorButtonActionPerformed
@@ -1377,6 +1388,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String lastname = ApellidoPersonaTextField.getText();
 
         Response response = ProgramController.registrarAutor(id, firstname, lastname);
+
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            IDPersonaTextField.setText("");
+            NombrePersonaTextField.setText("");
+            ApellidoPersonaTextField.setText("");
+        }
     }//GEN-LAST:event_CrearAutorButtonActionPerformed
 
     private void CrearGerenteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearGerenteButtonActionPerformed
@@ -1386,6 +1411,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         Response response = ProgramController.registrarGerente(id, firstname, lastname);
 
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            IDPersonaTextField.setText("");
+            NombrePersonaTextField.setText("");
+            ApellidoPersonaTextField.setText("");
+        }
+
     }//GEN-LAST:event_CrearGerenteButtonActionPerformed
 
     private void CrearNarradorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearNarradorButtonActionPerformed
@@ -1394,6 +1433,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String lastname = ApellidoPersonaTextField.getText();
 
         Response response = ProgramController.registrarNarrador(id, firstname, lastname);
+
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            IDPersonaTextField.setText("");
+            NombrePersonaTextField.setText("");
+            ApellidoPersonaTextField.setText("");
+        }
     }//GEN-LAST:event_CrearNarradorButtonActionPerformed
 
     private void CrearEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearEditorialButtonActionPerformed
@@ -1401,7 +1454,36 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String name = NombreEditorialTextField.getText();
         String address = DireccionEditorialTextField.getText();
         String managerData = (String) GerenteEditorialComboBox.getSelectedItem();
+
         Response response = ProgramController.registrarEditorial(nit, name, address, managerData);
+
+        if (response.getStatus() >= 500) {
+           
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+           
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else { 
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+           
+            NITEditorialTextField.setText("");
+            NombreEditorialTextField.setText("");
+            DireccionEditorialTextField.setText("");
+           
+
+            
+            ArrayList<String> editorialesActualizadas = ProgramController.obtenerNombresEditoriales();
+
+     
+            EditorialLibroComboBox.removeAllItems();
+            EditorialLibroComboBox.addItem("Seleccione uno...");
+            for (String editorial : editorialesActualizadas) {
+                EditorialLibroComboBox.addItem(editorial);
+            }
+
+           
+        }
 
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
 
@@ -1515,7 +1597,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         ArrayList<Object[]> dataRows = ProgramController.obtenerDatosStands();
 
         DefaultTableModel model = (DefaultTableModel) ListaStandsTable.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
 
         for (Object[] row : dataRows) {
             model.addRow(row);

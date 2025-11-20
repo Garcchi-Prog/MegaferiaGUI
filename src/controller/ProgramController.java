@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ProgramController {
 
-    public static Response crearStand(String id, String priceStr) {
+    public static Response crearStand(String id, String price) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -82,6 +82,10 @@ public class ProgramController {
     }
 
     public static ArrayList<Object[]> obtenerAutoresConMasLibros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static ArrayList<String> obtenerNombresEditoriales() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
