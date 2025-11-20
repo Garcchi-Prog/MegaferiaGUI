@@ -1,12 +1,40 @@
 package controller;
 
 import controller.utils.Response;
+import controller.utils.Status;
 import java.util.ArrayList;
+import model.Megaferia;
+import model.Stand;
 
 public class ProgramController {
 
-    public static Response createStand(String id, String price) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public static Response createStand(String idStr, String priceStr) {
+        try {
+            long id = Long.parseLong(idStr);
+            double price = Double.parseDouble(priceStr);
+
+            if (price <= 0) {
+                return new Response("El precio debe ser mayor a 0", Status.BAD_REQUEST);
+            }
+            
+            Megaferia db = Megaferia.getInstance();
+            for (Stand s : db.getStands()) {
+                if (s.getId() == id) {
+                     return new Response("El ID del Stand ya existe", Status.BAD_REQUEST);
+                }
+            }
+
+            Stand newStand = new Stand(id, price);
+
+            db.addStand(newStand);
+
+            return new Response("Stand creado exitosamente", Status.CREATED, newStand);
+
+        } catch (NumberFormatException e) {
+            return new Response("El ID y Precio deben ser números válidos", Status.BAD_REQUEST);
+        } catch (Exception e) {
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static Response registerAuthor(String id, String firstname, String lastname) {
