@@ -3,7 +3,6 @@ package view;
 import com.formdev.flatlaf.FlatDarkLaf;
 import controller.ProgramController;
 import controller.utils.Response;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -15,10 +14,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
      * Creates new form MegaferiaFrame
      */
     public MegaferiaFrame() {
-
         initComponents();
         setLocationRelativeTo(null);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -1366,7 +1363,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String id = IDStandTextField.getText();
         String price = PrecioStandTextField.getText();
 
-        Response response = ProgramController.crearStand(id, price);
+        Response response = ProgramController.createStand(id, price);
 
         if (response.getStatus() >= 500) {
 
@@ -1387,7 +1384,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registrarAutor(id, firstname, lastname);
+        Response response = ProgramController.registerAutor(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1409,7 +1406,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registrarGerente(id, firstname, lastname);
+        Response response = ProgramController.registerGerente(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1432,7 +1429,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registrarNarrador(id, firstname, lastname);
+        Response response = ProgramController.registerNarrador(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1455,34 +1452,21 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String address = DireccionEditorialTextField.getText();
         String managerData = (String) GerenteEditorialComboBox.getSelectedItem();
 
-        Response response = ProgramController.registrarEditorial(nit, name, address, managerData);
+        Response response = ProgramController.registerEditorial(nit, name, address, managerData);
 
         if (response.getStatus() >= 500) {
-           
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
-           
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
-        } else { 
+        } else {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-           
             NITEditorialTextField.setText("");
             NombreEditorialTextField.setText("");
             DireccionEditorialTextField.setText("");
-           
 
-            
-            ArrayList<String> editorialesActualizadas = ProgramController.obtenerNombresEditoriales();
-
-     
-            EditorialLibroComboBox.removeAllItems();
-            EditorialLibroComboBox.addItem("Seleccione uno...");
-            for (String editorial : editorialesActualizadas) {
-                EditorialLibroComboBox.addItem(editorial);
-            }
-
-           
         }
 
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
@@ -1526,7 +1510,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         boolean isDigital = LibroDigitalRadioButton.isSelected();
         boolean isAudiobook = AudioLibroRadioButton.isSelected();
 
-        Response response = ProgramController.registrarLibro(title, authorsContent, isbn, genre, format, valueStr, publisherData,
+        Response response = ProgramController.registerLibro(title, authorsContent, isbn, genre, format, valueStr, publisherData,
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
     }//GEN-LAST:event_CrearLibroButtonActionPerformed
 
@@ -1567,6 +1551,19 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String publishersContent = EditorialStandComprarTextArea.getText();
 
         Response response = ProgramController.comprarStands(standsContent, publishersContent);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            StandComprarTextArea.setText("");
+            EditorialStandComprarTextArea.setText("");
+
+        }
     }//GEN-LAST:event_ComprarStandButtonActionPerformed
 
     private void ConsultarEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarEditorialButtonActionPerformed
