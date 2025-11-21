@@ -165,22 +165,29 @@ public class ProgramController {
             }
 
             boolean formatoValido = true;
+
             if (nit.length() != 13) {
                 formatoValido = false;
             } else {
                 if (nit.charAt(3) != '.' || nit.charAt(7) != '.' || nit.charAt(11) != '-') {
                     formatoValido = false;
+                } else {
+                    String onlyDigits = nit.substring(0, 3) + nit.substring(4, 7) + nit.substring(8, 11) + nit.substring(12);
+                    if (!onlyDigits.matches("\\d+")) {
+                        formatoValido = false;
+                    }
+
                 }
             }
 
             if (!formatoValido) {
-                return new Response("El NIT debe tener formato XXX.XXX.XXX-X", Status.BAD_REQUEST);
+                return new Response("El NIT debe tener formato XXX.XXX.XXX-X donde cada X corresponde a un digito entre 0-9", Status.BAD_REQUEST);
             }
 
-            Megaferia db = Megaferia.getInstance();
+            Megaferia mega = Megaferia.getInstance();
 
-            for (Publisher pub : db.getPublishers()) {
-                if (pub.getNit().equals(nit)) {
+            for (Publisher publisher : mega.getPublishers()) {
+                if (publisher.getNit().equals(nit)) {
                     return new Response("El NIT de la editorial ya existe", Status.BAD_REQUEST);
                 }
             }
@@ -188,9 +195,9 @@ public class ProgramController {
             long managerId = Long.parseLong(managerData.split(" - ")[0]);
             Manager selectedManager = null;
 
-            for (Manager mgr : db.getManagers()) {
-                if (mgr.getId() == managerId) {
-                    selectedManager = mgr;
+            for (Manager manager : mega.getManagers()) {
+                if (manager.getId() == managerId) {
+                    selectedManager = manager;
                     break;
                 }
             }
@@ -200,12 +207,14 @@ public class ProgramController {
             }
 
             Publisher newPublisher = new Publisher(nit, name, address, selectedManager);
-            db.addPublisher(newPublisher);
+            mega.addPublisher(newPublisher);
 
             return new Response("Editorial registrada exitosamente", Status.CREATED, newPublisher);
 
+        } catch (NumberFormatException e) {
+            return new Response("Error al procesar el ID del Gerente.", Status.BAD_REQUEST);
         } catch (Exception e) {
-            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Error interno del sistema" , Status.INTERNAL_SERVER_ERROR);
         }
     }
 
