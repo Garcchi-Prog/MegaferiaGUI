@@ -5,10 +5,18 @@ import controller.utils.Status;
 import java.util.ArrayList;
 import model.Megaferia;
 import model.Stand;
+import model.Author;
+import model.Manager;
+import model.Narrator;
+import model.Publisher;
+import model.Book;
+import model.PrintedBook;
+import model.Audiobook;
+import model.DigitalBook;
 
 public class ProgramController {
 
-public static Response createStand(String idStr, String priceStr) {
+    public static Response createStand(String idStr, String priceStr) {
         try {
             long id = Long.parseLong(idStr);
             double price = Double.parseDouble(priceStr);
@@ -16,11 +24,11 @@ public static Response createStand(String idStr, String priceStr) {
             if (price <= 0) {
                 return new Response("El precio debe ser mayor a 0", Status.BAD_REQUEST);
             }
-            
+
             Megaferia db = Megaferia.getInstance();
             for (Stand s : db.getStands()) {
                 if (s.getId() == id) {
-                     return new Response("El ID del Stand ya existe", Status.BAD_REQUEST);
+                    return new Response("El ID del Stand ya existe", Status.BAD_REQUEST);
                 }
             }
 
@@ -37,20 +45,146 @@ public static Response createStand(String idStr, String priceStr) {
         }
     }
 
-    public static Response registerAuthor(String id, String firstname, String lastname) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Response registerAuthor(String idStr, String firstname, String lastname) {
+        try {
+            if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
+                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+            }
+
+            long id = Long.parseLong(idStr);
+
+            if (id < 0 || idStr.length() > 15) {
+                return new Response("El ID debe ser positivo y tener máx 15 dígitos", Status.BAD_REQUEST);
+            }
+
+            Megaferia db = Megaferia.getInstance();
+            for (Author author : db.getAuthors()) {
+                if (author.getId() == id) {
+                    return new Response("El ID del autor ya existe", Status.BAD_REQUEST);
+                }
+            }
+
+            Author newAuthor = new Author(id, firstname, lastname);
+            db.addAuthor(newAuthor);
+
+            return new Response("Autor registrado exitosamente", Status.CREATED, newAuthor);
+
+        } catch (NumberFormatException e) {
+            return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
+        } catch (Exception e) {
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public static Response registerManager(String id, String firstname, String lastname) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Response registerManager(String idStr, String firstname, String lastname) {
+        try {
+            if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
+                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+            }
+
+            long id = Long.parseLong(idStr);
+            if (id < 0 || idStr.length() > 15) {
+                return new Response("ID inválido (debe ser positivo y máx 15 dígitos)", Status.BAD_REQUEST);
+            }
+
+            Megaferia db = Megaferia.getInstance();
+            for (Manager mgr : db.getManagers()) {
+                if (mgr.getId() == id) {
+                    return new Response("El ID del gerente ya existe", Status.BAD_REQUEST);
+                }
+            }
+
+            Manager newManager = new Manager(id, firstname, lastname);
+            db.addManager(newManager);
+
+            return new Response("Gerente registrado exitosamente", Status.CREATED, newManager);
+
+        } catch (NumberFormatException e) {
+            return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
+        } catch (Exception e) {
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public static Response registerNarrator(String id, String firstname, String lastname) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Response registerNarrator(String idStr, String firstname, String lastname) {
+        try {
+            if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
+                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+            }
+
+            long id = Long.parseLong(idStr);
+            if (id < 0 || idStr.length() > 15) {
+                return new Response("ID inválido", Status.BAD_REQUEST);
+            }
+
+            Megaferia db = Megaferia.getInstance();
+            for (Narrator narrator : db.getNarrators()) {
+                if (narrator.getId() == id) {
+                    return new Response("El ID del narrador ya existe", Status.BAD_REQUEST);
+                }
+            }
+
+            Narrator newNarrator = new Narrator(id, firstname, lastname);
+            db.addNarrator(newNarrator);
+
+            return new Response("Narrador registrado exitosamente", Status.CREATED, newNarrator);
+
+        } catch (NumberFormatException e) {
+            return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
+        } catch (Exception e) {
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static Response registerPublisher(String nit, String name, String address, String managerData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            if (nit.trim().isEmpty() || name.trim().isEmpty() || address.trim().isEmpty() || managerData == null) {
+                return new Response("Todos los campos son obligatorios", Status.BAD_REQUEST);
+            }
+
+            boolean formatoValido = true;
+            if (nit.length() != 13) {
+                formatoValido = false;
+            } else {
+                if (nit.charAt(3) != '.' || nit.charAt(7) != '.' || nit.charAt(11) != '-') {
+                    formatoValido = false;
+                }
+            }
+
+            if (!formatoValido) {
+                return new Response("El NIT debe tener formato XXX.XXX.XXX-X", Status.BAD_REQUEST);
+            }
+
+            Megaferia db = Megaferia.getInstance();
+
+            for (Publisher pub : db.getPublishers()) {
+                if (pub.getNit().equals(nit)) {
+                    return new Response("El NIT de la editorial ya existe", Status.BAD_REQUEST);
+                }
+            }
+
+            long managerId = Long.parseLong(managerData.split(" - ")[0]);
+            Manager selectedManager = null;
+
+            for (Manager mgr : db.getManagers()) {
+                if (mgr.getId() == managerId) {
+                    selectedManager = mgr;
+                    break;
+                }
+            }
+
+            if (selectedManager == null) {
+                return new Response("El Gerente seleccionado no existe", Status.BAD_REQUEST);
+            }
+
+            Publisher newPublisher = new Publisher(nit, name, address, selectedManager);
+            db.addPublisher(newPublisher);
+
+            return new Response("Editorial registrada exitosamente", Status.CREATED, newPublisher);
+
+        } catch (Exception e) {
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static Response addAuthorToBook(String autorSeleccionado, String contenidoActualTextArea) {
@@ -62,7 +196,132 @@ public static Response createStand(String idStr, String priceStr) {
     }
 
     public static Response registerBook(String title, String authorsContent, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            if (title.trim().isEmpty() || genre.trim().isEmpty() || format.trim().isEmpty() || valueStr.trim().isEmpty()) {
+                return new Response("Los campos generales no deben ser vacíos", Status.BAD_REQUEST);
+            }
+
+            double value = Double.parseDouble(valueStr);
+            if (value <= 0) {
+                return new Response("El valor del libro debe ser mayor a 0", Status.BAD_REQUEST);
+            }
+
+            Megaferia db = Megaferia.getInstance();
+
+            String isbn = bn.trim();
+            boolean formatoValido = true;
+            if (isbn.length() != 17) {
+                formatoValido = false;
+            } else {
+                if (isbn.charAt(3) != '-' || isbn.charAt(5) != '-' || isbn.charAt(8) != '-' || isbn.charAt(15) != '-') {
+                    formatoValido = false;
+                }
+            }
+            if (!formatoValido) {
+                return new Response("El ISBN debe tener formato XXX-X-XX-XXXXXX-X", Status.BAD_REQUEST);
+            }
+
+            for (Book book : db.getBooks()) {
+                if (book.getIsbn().equals(isbn)) {
+                    return new Response("El ISBN ya pertenece a otro libro", Status.BAD_REQUEST);
+                }
+            }
+
+            ArrayList<Author> selectedAuthors = new ArrayList<>();
+            String[] authorsData = authorsContent.split("\n");
+            ArrayList<Long> authorsInBook = new ArrayList<>();
+
+            for (String authorStr : authorsData) {
+                if (authorStr.trim().isEmpty()) {
+                    continue;
+                }
+
+                long authorId = Long.parseLong(authorStr.split(" - ")[0]);
+
+                if (authorsInBook.contains(authorId)) {
+                    return new Response("No se pueden repetir autores en el mismo libro", Status.BAD_REQUEST);
+                }
+
+                Author foundAuthor = null;
+                for (Author a : db.getAuthors()) {
+                    if (a.getId() == authorId) {
+                        foundAuthor = a;
+                        break;
+                    }
+                }
+
+                if (foundAuthor == null) {
+                    return new Response("El autor con ID " + authorId + " no existe", Status.BAD_REQUEST);
+                }
+
+                selectedAuthors.add(foundAuthor);
+                authorsInBook.add(authorId);
+            }
+
+            if (selectedAuthors.isEmpty()) {
+                return new Response("Debe seleccionar al menos un autor", Status.BAD_REQUEST);
+            }
+
+            if (publisherData == null || publisherData.trim().isEmpty()) {
+                return new Response("Debe seleccionar una editorial", Status.BAD_REQUEST);
+            }
+            String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
+            Publisher selectedPublisher = null;
+
+            for (Publisher p : db.getPublishers()) {
+                if (p.getNit().equals(publisherNit)) {
+                    selectedPublisher = p;
+                    break;
+                }
+            }
+            if (selectedPublisher == null) {
+                return new Response("La editorial seleccionada no existe", Status.BAD_REQUEST);
+            }
+
+            Book newBook = null;
+
+            if (printed) {
+                int pages = Integer.parseInt(pagesStr);
+                int copies = Integer.parseInt(copiesStr);
+                newBook = new PrintedBook(title, selectedAuthors, isbn, genre, format, value, selectedPublisher, pages, copies);
+
+            } else if (digital) {
+                newBook = new DigitalBook(title, selectedAuthors, isbn, genre, format, value, selectedPublisher, hyperlink);
+
+            } else if (audiobook) {
+                int duration = Integer.parseInt(durationStr);
+
+                if (narratorData == null || narratorData.trim().isEmpty()) {
+                    return new Response("Debe seleccionar un narrador para el audiolibro", Status.BAD_REQUEST);
+                }
+
+                long narratorId = Long.parseLong(narratorData.split(" - ")[0]);
+                Narrator selectedNarrator = null;
+
+                for (Narrator n : db.getNarrators()) {
+                    if (n.getId() == narratorId) {
+                        selectedNarrator = n;
+                        break;
+                    }
+                }
+                if (selectedNarrator == null) {
+                    return new Response("El narrador seleccionado no existe", Status.BAD_REQUEST);
+                }
+
+                newBook = new Audiobook(title, selectedAuthors, isbn, genre, format, value, selectedPublisher, duration, selectedNarrator);
+            } else {
+                return new Response("Debe seleccionar un tipo de libro", Status.BAD_REQUEST);
+            }
+
+            db.addBook(newBook);
+
+            return new Response("Libro registrado exitosamente", Status.CREATED, newBook);
+
+        } catch (NumberFormatException e) {
+            return new Response("Revise que los campos numéricos sean correctos", Status.BAD_REQUEST);
+        } catch (Exception e) {
+            return new Response("Error interno al registrar libro: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static Response addStandToBuy(String standSeleccionado, String contenidoActualTextArea) {
@@ -85,8 +344,6 @@ public static Response createStand(String idStr, String priceStr) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
-    
     //Por ahora no hagas nada desde aca 
     public static ArrayList<Object[]> getPublisherData() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
