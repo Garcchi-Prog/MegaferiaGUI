@@ -18,128 +18,150 @@ public class ProgramController {
 
     public static Response createStand(String idStr, String priceStr) {
         try {
+
+            if (idStr.length() > 15) {
+                return new Response("El ID debe tener máx. 15 dígitos", Status.BAD_REQUEST);
+            }
+
             long id = Long.parseLong(idStr);
             double price = Double.parseDouble(priceStr);
 
-            if (price <= 0) {
-                return new Response("El precio debe ser mayor a 0", Status.BAD_REQUEST);
+            if (id < 0) {
+                return new Response("El ID debe ser mayor o igual a 0", Status.BAD_REQUEST);
             }
 
-            Megaferia db = Megaferia.getInstance();
-            for (Stand s : db.getStands()) {
-                if (s.getId() == id) {
+            if (price <= 0) {
+                return new Response("El precio debe ser superior a 0", Status.BAD_REQUEST);
+            }
+
+            Megaferia mega = Megaferia.getInstance();
+            for (Stand stand : mega.getStands()) {
+                if (stand.getId() == id) {
                     return new Response("El ID del Stand ya existe", Status.BAD_REQUEST);
                 }
             }
 
             Stand newStand = new Stand(id, price);
-
-            db.addStand(newStand);
+            mega.addStand(newStand);
 
             return new Response("Stand creado exitosamente", Status.CREATED, newStand);
 
         } catch (NumberFormatException e) {
             return new Response("El ID y Precio deben ser números válidos", Status.BAD_REQUEST);
         } catch (Exception e) {
-            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
 
     public static Response registerAuthor(String idStr, String firstname, String lastname) {
         try {
             if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
-                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+                return new Response("Los campos no deben estar vacíos", Status.BAD_REQUEST);
+            }
+
+            if (idStr.length() > 15) {
+                return new Response("El ID debe tener máx. 15 dígitos", Status.BAD_REQUEST);
             }
 
             long id = Long.parseLong(idStr);
 
-            if (id < 0 || idStr.length() > 15) {
-                return new Response("El ID debe ser positivo y tener máx 15 dígitos", Status.BAD_REQUEST);
+            if (id < 0) {
+                return new Response("El ID debe ser mayor o igual a 0", Status.BAD_REQUEST);
             }
 
-            Megaferia db = Megaferia.getInstance();
-            for (Author author : db.getAuthors()) {
+            Megaferia mega = Megaferia.getInstance();
+            for (Author author : mega.getAuthors()) {
                 if (author.getId() == id) {
                     return new Response("El ID del autor ya existe", Status.BAD_REQUEST);
                 }
             }
 
             Author newAuthor = new Author(id, firstname, lastname);
-            db.addAuthor(newAuthor);
+            mega.addAuthor(newAuthor);
 
             return new Response("Autor registrado exitosamente", Status.CREATED, newAuthor);
 
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
         } catch (Exception e) {
-            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
 
     public static Response registerManager(String idStr, String firstname, String lastname) {
         try {
             if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
-                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+                return new Response("Los campos no deben estar vacíos", Status.BAD_REQUEST);
+            }
+
+            if (idStr.length() > 15) {
+                return new Response("El ID debe tener máx. 15 dígitos", Status.BAD_REQUEST);
             }
 
             long id = Long.parseLong(idStr);
-            if (id < 0 || idStr.length() > 15) {
-                return new Response("ID inválido (debe ser positivo y máx 15 dígitos)", Status.BAD_REQUEST);
+
+            if (id < 0) {
+                return new Response("El ID debe ser mayor o igual a 0", Status.BAD_REQUEST);
             }
 
-            Megaferia db = Megaferia.getInstance();
-            for (Manager mgr : db.getManagers()) {
-                if (mgr.getId() == id) {
+            Megaferia mega = Megaferia.getInstance();
+            for (Manager manager : mega.getManagers()) {
+                if (manager.getId() == id) {
                     return new Response("El ID del gerente ya existe", Status.BAD_REQUEST);
                 }
             }
 
             Manager newManager = new Manager(id, firstname, lastname);
-            db.addManager(newManager);
+            mega.addManager(newManager);
 
             return new Response("Gerente registrado exitosamente", Status.CREATED, newManager);
 
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
         } catch (Exception e) {
-            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
 
     public static Response registerNarrator(String idStr, String firstname, String lastname) {
         try {
             if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
-                return new Response("Los campos no deben ser vacíos", Status.BAD_REQUEST);
+                return new Response("Los campos no deben estar vacíos", Status.BAD_REQUEST);
+            }
+
+            if (idStr.length() > 15) {
+                return new Response("El ID debe tener máx. 15 dígitos", Status.BAD_REQUEST);
             }
 
             long id = Long.parseLong(idStr);
-            if (id < 0 || idStr.length() > 15) {
-                return new Response("ID inválido", Status.BAD_REQUEST);
+
+            if (id < 0) {
+                return new Response("El ID debe ser mayor o igual a 0", Status.BAD_REQUEST);
             }
 
-            Megaferia db = Megaferia.getInstance();
-            for (Narrator narrator : db.getNarrators()) {
+            Megaferia mega = Megaferia.getInstance();
+            for (Narrator narrator : mega.getNarrators()) {
                 if (narrator.getId() == id) {
                     return new Response("El ID del narrador ya existe", Status.BAD_REQUEST);
                 }
             }
 
             Narrator newNarrator = new Narrator(id, firstname, lastname);
-            db.addNarrator(newNarrator);
+            mega.addNarrator(newNarrator);
 
             return new Response("Narrador registrado exitosamente", Status.CREATED, newNarrator);
 
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico", Status.BAD_REQUEST);
         } catch (Exception e) {
-            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
 
     public static Response registerPublisher(String nit, String name, String address, String managerData) {
         try {
             if (nit.trim().isEmpty() || name.trim().isEmpty() || address.trim().isEmpty() || managerData == null) {
-                return new Response("Todos los campos son obligatorios", Status.BAD_REQUEST);
+                return new Response("Los campos no deben estar vacíos", Status.BAD_REQUEST);
             }
 
             boolean formatoValido = true;
