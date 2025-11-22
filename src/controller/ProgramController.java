@@ -349,151 +349,33 @@ public class ProgramController {
     }
 
     public static Response addStandToBuy(String standSeleccionado, String contenidoActualTextArea) {
-        if (standSeleccionado == null || standSeleccionado.isEmpty()) {
-            return new Response("Debe seleccionar un Stand", Status.BAD_REQUEST);
-        }
 
-        String[] lineas = contenidoActualTextArea.split("\n");
-        for (String linea : lineas) {
-            if (linea.trim().equals(standSeleccionado)) {
-                return new Response("El Stand ya está en la lista", Status.BAD_REQUEST);
-            }
-        }
+        throw new UnsupportedOperationException("Not supported yet.");
 
-        String nuevoContenido = contenidoActualTextArea.isEmpty() ? standSeleccionado : contenidoActualTextArea + "\n" + standSeleccionado;
-        return new Response("Stand agregado", Status.OK, nuevoContenido);
     }
 
     public static Response deleteStandFromBuy(String standAEliminar, String contenidoActualTextArea) {
-        if (standAEliminar == null || standAEliminar.isEmpty()) {
-            return new Response("Debe seleccionar un Stand de la lista para eliminar", Status.BAD_REQUEST);
-        }
 
-        String nuevoContenido = "";
-        String[] lineas = contenidoActualTextArea.split("\n");
+        throw new UnsupportedOperationException("Not supported yet.");
 
-        for (String linea : lineas) {
-            if (!linea.trim().equals(standAEliminar) && !linea.trim().isEmpty()) {
-                if (nuevoContenido.isEmpty()) {
-                    nuevoContenido = linea;
-                } else {
-                    nuevoContenido += "\n" + linea;
-                }
-            }
-        }
-        return new Response("Stand eliminado", Status.OK, nuevoContenido);
     }
 
     public static Response addPublisherToBuy(String editorialSeleccionada, String contenidoActualTextArea) {
-        if (editorialSeleccionada == null || editorialSeleccionada.isEmpty()) {
-            return new Response("Debe seleccionar una Editorial", Status.BAD_REQUEST);
-        }
 
-        String[] lineas = contenidoActualTextArea.split("\n");
-        for (String linea : lineas) {
-            if (linea.trim().equals(editorialSeleccionada)) {
-                return new Response("La Editorial ya está en la lista", Status.BAD_REQUEST);
-            }
-        }
+        throw new UnsupportedOperationException("Not supported yet.");
 
-        String nuevoContenido = contenidoActualTextArea.isEmpty() ? editorialSeleccionada : contenidoActualTextArea + "\n" + editorialSeleccionada;
-        return new Response("Editorial agregada", Status.OK, nuevoContenido);
     }
 
     public static Response deletePublisherFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
-        if (editorialAEliminar == null || editorialAEliminar.isEmpty()) {
-            return new Response("Debe seleccionar una Editorial de la lista para eliminar", Status.BAD_REQUEST);
-        }
 
-        String nuevoContenido = "";
-        String[] lineas = contenidoActualTextArea.split("\n");
+        throw new UnsupportedOperationException("Not supported yet.");
 
-        for (String linea : lineas) {
-            if (!linea.trim().equals(editorialAEliminar) && !linea.trim().isEmpty()) {
-                if (nuevoContenido.isEmpty()) {
-                    nuevoContenido = linea;
-                } else {
-                    nuevoContenido += "\n" + linea;
-                }
-            }
-        }
-        return new Response("Editorial eliminada", Status.OK, nuevoContenido);
     }
 
     public static Response buyStand(String standsContent, String publishersContent) {
-        try {
-            if (standsContent.trim().isEmpty() || publishersContent.trim().isEmpty()) {
-                return new Response("Debe seleccionar al menos un Stand y una Editorial", Status.BAD_REQUEST);
-            }
 
-            ArrayList<Stand> standsAComprar = new ArrayList<>();
-            String[] standLines = standsContent.split("\n");
-            IStandRepository standRepo = Megaferia.getInstance().getStandRepository();
+        throw new UnsupportedOperationException("Not supported yet.");
 
-            for (String linea : standLines) {
-                if (linea.trim().isEmpty()) {
-                    continue;
-                }
-                long idStand = Long.parseLong(linea.trim());
-
-                boolean encontrado = false;
-                for (Stand s : standRepo.obtenerTodos()) {
-                    if (s.getId() == idStand) {
-                        standsAComprar.add(s);
-                        encontrado = true;
-                        break;
-                    }
-                }
-                if (!encontrado) {
-                    return new Response("El Stand con ID " + idStand + " no existe", Status.BAD_REQUEST);
-                }
-            }
-
-            ArrayList<Publisher> editorialesCompradoras = new ArrayList<>();
-            String[] pubLines = publishersContent.split("\n");
-            IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
-
-            for (String linea : pubLines) {
-                if (linea.trim().isEmpty()) {
-                    continue;
-                }
-                String nit = linea.split(" ")[1].replace("(", "").replace(")", "");
-
-                boolean encontrado = false;
-                for (Publisher p : pubRepo.obtenerTodos()) {
-                    if (p.getNit().equals(nit)) {
-                        editorialesCompradoras.add(p);
-                        encontrado = true;
-                        break;
-                    }
-                }
-                if (!encontrado) {
-                    return new Response("La editorial con NIT " + nit + " no existe", Status.BAD_REQUEST);
-                }
-            }
-
-            for (Stand s : standsAComprar) {
-                for (Publisher p : editorialesCompradoras) {
-                    boolean yaTiene = false;
-                    for (Publisher existingPub : s.getPublishers()) {
-                        if (existingPub.getNit().equals(p.getNit())) {
-                            yaTiene = true;
-                            break;
-                        }
-                    }
-
-                    if (!yaTiene) {
-                        s.addPublisher(p);
-                        p.addStand(s);
-                    }
-                }
-            }
-
-            return new Response("Compra de Stands realizada con éxito", Status.OK);
-
-        } catch (Exception e) {
-            return new Response("Error al procesar la compra", Status.INTERNAL_SERVER_ERROR);
-        }
     }
 
     public static ArrayList<Object[]> getPublisherData() {
