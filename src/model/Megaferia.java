@@ -1,26 +1,38 @@
 
 package model;
 
-import java.util.ArrayList;
+import modelrepository.IStandRepository;
+import modelrepository.IAuthorRepository;
+import modelrepository.IManagerRepository;
+import modelrepository.INarratorRepository;
+import modelrepository.IPublisherRepository;
+import modelrepository.IBookRepository;
+
+import modelrepository.impl.StandRepositoryImpl;
+import modelrepository.impl.AuthorRepositoryImpl;
+import modelrepository.impl.ManagerRepositoryImpl;
+import modelrepository.impl.NarratorRepositoryImpl;
+import modelrepository.impl.PublisherRepositoryImpl;
+import modelrepository.impl.BookRepositoryImpl;
 
 public class Megaferia {
-    
+
     private static Megaferia instance;
 
-    private ArrayList<Stand> stands;
-    private ArrayList<Author> authors;
-    private ArrayList<Manager> managers;
-    private ArrayList<Narrator> narrators;
-    private ArrayList<Publisher> publishers;
-    private ArrayList<Book> books;
+    private IStandRepository standRepository;
+    private IAuthorRepository authorRepository;
+    private IManagerRepository managerRepository;
+    private INarratorRepository narratorRepository;
+    private IPublisherRepository publisherRepository;
+    private IBookRepository bookRepository;
 
     private Megaferia() {
-        this.stands = new ArrayList<>();
-        this.authors = new ArrayList<>();
-        this.managers = new ArrayList<>();
-        this.narrators = new ArrayList<>();
-        this.publishers = new ArrayList<>();
-        this.books = new ArrayList<>();
+        this.standRepository = new StandRepositoryImpl();
+        this.authorRepository = new AuthorRepositoryImpl();
+        this.managerRepository = new ManagerRepositoryImpl();
+        this.narratorRepository = new NarratorRepositoryImpl();
+        this.publisherRepository = new PublisherRepositoryImpl();
+        this.bookRepository = new BookRepositoryImpl();
     }
 
     public static Megaferia getInstance() {
@@ -30,53 +42,27 @@ public class Megaferia {
         return instance;
     }
 
-    
-    public void addStand(Stand stand) {
-        this.stands.add(stand);
+    public IStandRepository getStandRepository() {
+        return standRepository;
     }
 
-    public void addAuthor(Author author) {
-        this.authors.add(author);
+    public IAuthorRepository getAuthorRepository() {
+        return authorRepository;
     }
 
-    public void addManager(Manager manager) {
-        this.managers.add(manager);
+    public IManagerRepository getManagerRepository() {
+        return managerRepository;
     }
 
-    public void addNarrator(Narrator narrator) {
-        this.narrators.add(narrator);
+    public INarratorRepository getNarratorRepository() {
+        return narratorRepository;
     }
 
-    public void addPublisher(Publisher publisher) {
-        this.publishers.add(publisher);
+    public IPublisherRepository getPublisherRepository() {
+        return publisherRepository;
     }
 
-    public void addBook(Book book) {
-        this.books.add(book);
-    }
-
-    
-    public ArrayList<Stand> getStands() {
-        return stands;
-    }
-
-    public ArrayList<Author> getAuthors() {
-        return authors;
-    }
-
-    public ArrayList<Manager> getManagers() {
-        return managers;
-    }
-
-    public ArrayList<Narrator> getNarrators() {
-        return narrators;
-    }
-
-    public ArrayList<Publisher> getPublishers() {
-        return publishers;
-    }
-
-    public ArrayList<Book> getBooks() {
-        return books;
+    public IBookRepository getBookRepository() {
+        return bookRepository;
     }
 }
