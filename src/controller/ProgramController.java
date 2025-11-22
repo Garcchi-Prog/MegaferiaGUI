@@ -394,19 +394,19 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static ArrayList<Object[]> obtenerLibrosPorAutor(String autorData) {
+    public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static ArrayList<Object[]> obtenerLibrosPorFormato(String searchFormat) {
+    public static ArrayList<Object[]> getBooksByFormat(String searchFormat) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static ArrayList<Object[]> obtenerAutoresConMasLibros() {
+    public static ArrayList<Object[]> getAuthorsMostBooks() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static ArrayList<Object[]> obtenerNombresEditoriales() {
+    public static ArrayList<Object[]> getPublisherNames() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

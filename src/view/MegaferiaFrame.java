@@ -1704,7 +1704,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String autorData = (String) AutorConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerLibrosPorAutor(autorData);
+        ArrayList<Object[]> dataRows = ProgramController.getBooksByAuthor(autorData);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1718,7 +1718,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String searchFormat = (String) FormatoConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerLibrosPorFormato(searchFormat);
+        ArrayList<Object[]> dataRows = ProgramController.getBooksByFormat(searchFormat);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1730,7 +1730,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarAutoresMasLibrosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarAutoresMasLibrosButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.obtenerAutoresConMasLibros();
+        ArrayList<Object[]> dataRows = ProgramController.getAuthorsMostBooks();
 
         DefaultTableModel model = (DefaultTableModel) AutoresConMasLibrosConsultaTable.getModel();
         model.setRowCount(0);
