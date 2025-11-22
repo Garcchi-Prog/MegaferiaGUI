@@ -25,14 +25,6 @@ public class Author extends Person {
         this.books.add(book);
     }
     
-    public int getPublisherQuantity() {
-        ArrayList<Publisher> publishers = new ArrayList<>();
-        for (Book book : this.books) {
-            if (!publishers.contains(book.getPublisher())) {
-                publishers.add(book.getPublisher());
-            }
-        }
-        return publishers.size();
-    }
+    
     
 }
