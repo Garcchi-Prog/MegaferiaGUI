@@ -528,4 +528,12 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public static Response addAuthorToBook(String autorSeleccionado, String contenidoActualTextArea) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static Response DeleteAuthorFromBook(String autorEliminar, String contenidoActualTextArea) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
