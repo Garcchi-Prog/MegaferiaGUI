@@ -1661,6 +1661,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = EditorialesComprarStandComboBox.getItemAt(EditorialesComprarStandComboBox.getSelectedIndex());
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
+        String nuevoContenidoTextArea = "";
 
         Response response = PublisherController.deleteFromBuy(editorialAEliminar, contenidoActualTextArea);
 
@@ -1669,7 +1670,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            
+            EditorialesComprarStandComboBox.setSelectedIndex(0);
+
 
         }
     }//GEN-LAST:event_ElEditorialComprarStandButtonActionPerformed
