@@ -1,8 +1,10 @@
 package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import controller.BookController;
 import controller.ProgramController;
 import controller.PublisherController;
+import controller.StandController;
 import controller.utils.Response;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -1370,7 +1372,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String id = IDStandTextField.getText();
         String price = PrecioStandTextField.getText();
 
-        Response response = ProgramController.createStand(id, price);
+        Response response = StandController.create(id, price);
 
         if (response.getStatus() >= 500) {
 
@@ -1538,7 +1540,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         boolean isDigital = LibroDigitalRadioButton.isSelected();
         boolean isAudiobook = AudioLibroRadioButton.isSelected();
 
-        Response response = ProgramController.registerBook(title, authorsContent, isbn, genre, format, valueStr, publisherData,
+        Response response = BookController.register(title, authorsContent, isbn, genre, format, valueStr, publisherData,
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
 
         if (response.getStatus() >= 500) {
