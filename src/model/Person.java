@@ -1,9 +1,7 @@
-
 package model;
 
-
 public abstract class Person {
-    
+
     protected final long id;
     protected String firstname;
     protected String lastname;
@@ -25,9 +23,19 @@ public abstract class Person {
     public String getLastname() {
         return lastname;
     }
-    
+
     public String getFullname() {
         return firstname + " " + lastname;
     }
-    
+
+    public abstract String getRoleType();
+
+    public Object getPublisherInfo() {
+        return "N/A";
+    }
+
+    public int getBookCount() {
+        return 0;
+    }
+
 }

@@ -390,7 +390,7 @@ public class ProgramController {
         IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
         IManagerRepository manRepo = Megaferia.getInstance().getManagerRepository();
         
-        ArrayList<Person> persons = null;
+        ArrayList<Person> persons = new ArrayList<>();
         persons.addAll(narRepo.obtenerTodos());
         persons.addAll(auRepo.obtenerTodos());
         persons.addAll(manRepo.obtenerTodos());

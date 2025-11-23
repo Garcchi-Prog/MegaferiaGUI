@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import model.Person;
 
 public class MegaferiaFrame extends javax.swing.JFrame {
 
@@ -1668,13 +1669,22 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarPersonaButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.getPersonData();
+        ArrayList<Person> dataRows = ProgramController.getPersonData();
 
         DefaultTableModel model = (DefaultTableModel) ListaPersonasTable.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0); // Limpiar filas
 
-        for (Object[] row : dataRows) {
-            model.addRow(row);
+        for (Person person : dataRows) {
+
+            Object[] rowData = new Object[5];
+            rowData[0] = person.getId();
+            rowData[1] = person.getFullname();
+
+            rowData[2] = person.getRoleType();
+            rowData[3] = person.getPublisherInfo();
+            rowData[4] = person.getBookCount();
+
+            model.addRow(rowData);
         }
     }//GEN-LAST:event_ConsultarPersonaButtonActionPerformed
 
