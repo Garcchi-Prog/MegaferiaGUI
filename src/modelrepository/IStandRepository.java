@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import model.Stand;
 
 public interface IStandRepository {
-    void guardar(Stand stand);
-    ArrayList<Stand> obtenerTodos();
+
+    public abstract void guardar(Stand stand);
+
+    public abstract ArrayList<Stand> obtenerTodos();
+    
 }

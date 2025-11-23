@@ -9,7 +9,7 @@ import model.Narrator;
 
 public interface INarratorRepository {
     
-    void guardar(Narrator narrator);
+    public abstract void guardar(Narrator narrator);
     
-    ArrayList<Narrator> obtenerTodos();
+    public abstract ArrayList<Narrator> obtenerTodos();
 }

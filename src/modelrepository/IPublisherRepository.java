@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import model.Publisher;
 
 public interface IPublisherRepository {
-    void guardar(Publisher publisher);
-    ArrayList<Publisher> obtenerTodos();
-    Publisher buscarPorNit(String nit);
+
+    public abstract void guardar(Publisher publisher);
+
+    public abstract ArrayList<Publisher> obtenerTodos();
+
+    public abstract Publisher buscarPorNit(String nit);
 }

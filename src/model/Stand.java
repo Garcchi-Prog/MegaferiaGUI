@@ -1,9 +1,7 @@
 
 package model;
 
-import model.Publisher;
 import java.util.ArrayList;
-
 
 public class Stand {
     

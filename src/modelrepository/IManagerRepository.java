@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import model.Manager;
 
 public interface IManagerRepository {
-    
-    void guardar(Manager manager);
-    
-    ArrayList<Manager> obtenerTodos();
+
+    public abstract void guardar(Manager manager);
+
+    public abstract ArrayList<Manager> obtenerTodos();
 }

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import model.Book;
 
 public interface IBookRepository {
-    
-    void guardar(Book book);
-    
-    ArrayList<Book> obtenerTodos();
+
+    public abstract void guardar(Book book);
+
+    public abstract ArrayList<Book> obtenerTodos();
 }

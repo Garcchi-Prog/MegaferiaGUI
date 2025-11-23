@@ -9,7 +9,7 @@ import model.Author;
 import java.util.ArrayList;
 
 public class AuthorRepositoryImpl implements IAuthorRepository {
-    
+
     private ArrayList<Author> listaAutores;
 
     public AuthorRepositoryImpl() {

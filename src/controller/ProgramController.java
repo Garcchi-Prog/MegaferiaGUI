@@ -1,8 +1,10 @@
 package controller;
 
 import controller.utils.Response;
+import controller.utils.SortByID;
 import controller.utils.Status;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.Megaferia;
 import model.Stand;
@@ -14,6 +16,7 @@ import model.Book;
 import model.PrintedBook;
 import model.Audiobook;
 import model.DigitalBook;
+import model.Person;
 
 import modelrepository.IStandRepository;
 import modelrepository.IAuthorRepository;
@@ -382,8 +385,18 @@ public class ProgramController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static ArrayList<Object[]> getPersonData() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public static ArrayList<Person> getPersonData() {
+        INarratorRepository narRepo = Megaferia.getInstance().getNarratorRepository();
+        IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
+        IManagerRepository manRepo = Megaferia.getInstance().getManagerRepository();
+        
+        ArrayList<Person> persons = null;
+        persons.addAll(narRepo.obtenerTodos());
+        persons.addAll(auRepo.obtenerTodos());
+        persons.addAll(manRepo.obtenerTodos());
+        
+        Collections.sort(persons, new SortByID());
+        return persons;
     }
 
     public static ArrayList<Object[]> getStandData() {
