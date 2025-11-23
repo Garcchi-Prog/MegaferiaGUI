@@ -4,9 +4,13 @@
  */
 package controller;
 
+import controller.utils.AuthorService;
 import controller.utils.Response;
+import controller.utils.SortArray;
+import controller.utils.SortByISBN;
 import controller.utils.Status;
 import java.util.ArrayList;
+import java.util.Collections;
 import model.Audiobook;
 import model.Author;
 import model.Book;
@@ -96,7 +100,7 @@ public class BookController {
                 return new Response("Debe seleccionar una editorial", Status.BAD_REQUEST);
             }
 
-            String publisherNit = publisherData.split(" - ")[0].trim(); 
+            String publisherNit = publisherData.split(" - ")[0].trim();
             Publisher selectedPublisher = null;
             IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
 
@@ -159,11 +163,48 @@ public class BookController {
     }
 
     public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (autorData.trim().equals("Seleccione uno...")) {
+            return new ArrayList<>();
+        }
+
+        IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
+        Author author = null;
+        IBookRepository bookRepo = Megaferia.getInstance().getBookRepository();
+        ArrayList<Object[]> books = new ArrayList<>();
+        String[] tempData = autorData.split(" - ");
+        for (Author tempAuthor : auRepo.obtenerTodos()) {
+
+            if (tempAuthor.getId() == Integer.parseInt(tempData[0])) {
+                author = tempAuthor;
+            }
+        }
+
+        for (Book libro : bookRepo.obtenerTodos()) {
+            if (libro.getAuthors().contains(author)) {
+                Object[] sendBooks = new Object[12];
+                sendBooks[0] = libro.getTitle();
+                sendBooks[1] = libro.getAuthors();
+                sendBooks[2] = libro.getIsbn();
+                sendBooks[3] = libro.getGenre();
+                sendBooks[4] = libro.getFormat();
+                sendBooks[5] = libro.getValue();
+                sendBooks[6] = libro.getPublisher();
+                sendBooks[7] = (libro instanceof PrintedBook) ? PrintedBook.class.cast(libro).getCopies() : "";
+                sendBooks[8] = (libro instanceof PrintedBook) ? PrintedBook.class.cast(libro).getPages() : "";
+                sendBooks[9] = (libro instanceof DigitalBook) ? DigitalBook.class.cast(libro).getHyperlink() : "";
+                sendBooks[10] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getNarrador() : "";
+                sendBooks[11] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getDuration() : "";
+            }
+        }
+
+        Collections.sort(books, new SortByISBN());
+
+        return books;
+
     }
 
     public static ArrayList<Object[]> getBooksByFormat(String searchFormat) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public static Response addAuthorTo(String autor, String contenido) {

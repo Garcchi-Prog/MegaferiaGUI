@@ -1,22 +1,30 @@
 package controller;
 
+import controller.utils.SortArray;
+import controller.utils.AuthorService;
 import controller.utils.Response;
 import controller.utils.SortByID;
+import controller.utils.SortByISBN;
 import controller.utils.Status;
 import java.util.ArrayList;
 import java.util.Collections;
+import model.Audiobook;
 
 import model.Megaferia;
 import model.Author;
+import model.Book;
+import model.DigitalBook;
 import model.Manager;
 import model.Narrator;
 import model.Person;
+import model.PrintedBook;
 
 import modelrepository.IAuthorRepository;
+import modelrepository.IBookRepository;
 import modelrepository.IManagerRepository;
 import modelrepository.INarratorRepository;
 
-public class ProgramController {
+public class PersonController {
 
     public static Response registerAuthor(String idStr, String firstname, String lastname) {
         try {
@@ -119,35 +127,36 @@ public class ProgramController {
             return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
-   
+
     public static ArrayList<Person> getPersonData() {
         INarratorRepository narRepo = Megaferia.getInstance().getNarratorRepository();
         IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
         IManagerRepository manRepo = Megaferia.getInstance().getManagerRepository();
-        
+
         ArrayList<Person> persons = new ArrayList<>();
         persons.addAll(narRepo.obtenerTodos());
         persons.addAll(auRepo.obtenerTodos());
         persons.addAll(manRepo.obtenerTodos());
-        
+
         Collections.sort(persons, new SortByID());
         return persons;
     }
 
-    public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public static ArrayList<Object[]> getBooksByFormat(String searchFormat) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public static ArrayList<Object[]> getAuthorsMostBooks() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
+        ArrayList<Object[]> authors = new ArrayList<>();
 
-    public static ArrayList<Object[]> getPublisherNames() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Author autores : auRepo.obtenerTodos()) {
+            Object[] autor = new Object[3];
+            autor[0] = autores.getId();
+            autor[1] = autores.getFullname();
+            autor[2] = AuthorService.calculateUniquePublisherQuantity(autores);
+            authors.add(autor);
+        }
+
+        Collections.sort(authors, new SortArray());
+
+        return authors;
     }
 
 }

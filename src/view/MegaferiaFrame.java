@@ -2,7 +2,7 @@ package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import controller.BookController;
-import controller.ProgramController;
+import controller.PersonController;
 import controller.PublisherController;
 import controller.StandController;
 import controller.utils.Response;
@@ -1404,7 +1404,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerAuthor(id, firstname, lastname);
+        Response response = PersonController.registerAuthor(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1432,7 +1432,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerManager(id, firstname, lastname);
+        Response response = PersonController.registerManager(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1460,7 +1460,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = NombrePersonaTextField.getText();
         String lastname = ApellidoPersonaTextField.getText();
 
-        Response response = ProgramController.registerNarrator(id, firstname, lastname);
+        Response response = PersonController.registerNarrator(id, firstname, lastname);
 
         if (response.getStatus() >= 500) {
 
@@ -1722,7 +1722,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarPersonaButtonActionPerformed
 
-        ArrayList<Person> dataRows = ProgramController.getPersonData();
+        ArrayList<Person> dataRows = PersonController.getPersonData();
 
         DefaultTableModel model = (DefaultTableModel) ListaPersonasTable.getModel();
         model.setRowCount(0);
@@ -1790,7 +1790,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String autorData = (String) AutorConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = ProgramController.getBooksByAuthor(autorData);
+        ArrayList<Object[]> dataRows = BookController.getBooksByAuthor(autorData);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1804,7 +1804,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         String searchFormat = (String) FormatoConsultaComboBox.getSelectedItem();
 
-        ArrayList<Object[]> dataRows = ProgramController.getBooksByFormat(searchFormat);
+        ArrayList<Object[]> dataRows = BookController.getBooksByFormat(searchFormat);
 
         DefaultTableModel model = (DefaultTableModel) LibroBuscarConsultaTable.getModel();
         model.setRowCount(0);
@@ -1816,7 +1816,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarAutoresMasLibrosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarAutoresMasLibrosButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.getAuthorsMostBooks();
+        ArrayList<Object[]> dataRows = PersonController.getAuthorsMostBooks();
 
         DefaultTableModel model = (DefaultTableModel) AutoresConMasLibrosConsultaTable.getModel();
         model.setRowCount(0);

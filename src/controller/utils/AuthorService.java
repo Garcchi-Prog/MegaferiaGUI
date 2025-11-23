@@ -1,11 +1,14 @@
 
-package model;
+package controller.utils;
 
 import java.util.ArrayList;
+import model.Author;
+import model.Book;
+import model.Publisher;
 
 
-public class AuthorService {
-    public int calculateUniquePublisherQuantity(Author author) {
+public abstract class AuthorService {
+    public static int calculateUniquePublisherQuantity(Author author) {
         ArrayList<Publisher> publishers = new ArrayList<>();
         for (Book book : author.getBooks()) {
             if (!publishers.contains(book.getPublisher())) {
