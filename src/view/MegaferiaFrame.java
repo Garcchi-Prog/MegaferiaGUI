@@ -1572,7 +1572,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standSeleccionado = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        Response response = ProgramController.addStandToBuy(standSeleccionado, contenidoActualTextArea);
+        Response response = StandController.addToBuy(standSeleccionado, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
 
@@ -1595,7 +1595,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standAEliminar = (String) IDStandsComprarComboBox.getSelectedItem();
         String contenidoActualTextArea = StandComprarTextArea.getText();
 
-        Response response = ProgramController.deleteStandFromBuy(standAEliminar, contenidoActualTextArea);
+        Response response = StandController.deleteFromBuy(standAEliminar, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1611,7 +1611,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String editorialSeleccionada = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        Response response = ProgramController.addPublisherToBuy(editorialSeleccionada, contenidoActualTextArea);
+        Response response = PublisherController.addToBuy(editorialSeleccionada, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1627,7 +1627,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String editorialAEliminar = (String) EditorialesComprarStandComboBox.getSelectedItem();
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
 
-        Response response = ProgramController.deletePublisherFromBuy(editorialAEliminar, contenidoActualTextArea);
+        Response response = PublisherController.deleteFromBuy(editorialAEliminar, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1643,7 +1643,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String standsContent = StandComprarTextArea.getText();
         String publishersContent = EditorialStandComprarTextArea.getText();
 
-        Response response = ProgramController.buyStand(standsContent, publishersContent);
+        Response response = StandController.buy(standsContent, publishersContent);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);

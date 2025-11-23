@@ -51,13 +51,13 @@ public class StandController {
         }
     }
 
-    public Response addToBuy(String seleccionado, String contenidoActualTextArea) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
+    public static Response addToBuy(String standSeleccionado, String contenidoActualTextArea) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public Response deleteFromBuy(String aEliminar, String contenidoActualTextArea) {
+    
+
+    public static Response deleteFromBuy(String aEliminar, String contenidoActualTextArea) {
 
         throw new UnsupportedOperationException("Not supported yet.");
 
