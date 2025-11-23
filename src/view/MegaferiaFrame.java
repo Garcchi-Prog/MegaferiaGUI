@@ -1484,6 +1484,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else {
             Publisher nuevaEditorial = (Publisher) response.getObject();
             EditorialLibroComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
+            EditorialesComprarStandComboBox.addItem(nuevaEditorial.getNit()+ " - " + nuevaEditorial.getName());
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             NITEditorialTextField.setText("");
