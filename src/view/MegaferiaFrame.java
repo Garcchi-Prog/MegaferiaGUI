@@ -1501,9 +1501,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
 
-<<<<<<< Updated upstream
-        
-=======
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
@@ -1514,7 +1511,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
 
->>>>>>> Stashed changes
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
@@ -1524,9 +1520,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         Response response = BookController.deleteFrom(autorEliminar, contenidoActualTextArea);
 
-<<<<<<< Updated upstream
-        
-=======
         if (response.getStatus() >= 500) {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1544,7 +1537,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
->>>>>>> Stashed changes
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
