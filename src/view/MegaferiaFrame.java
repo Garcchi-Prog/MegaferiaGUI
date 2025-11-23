@@ -1231,7 +1231,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(OpcionesTabbedPane)
+            .addComponent(OpcionesTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1576,11 +1576,15 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            String nuevoContenido = (String) response.getObject();
+
+            StandComprarTextArea.setText(nuevoContenido);
+
+            IDStandsComprarComboBox.setSelectedIndex(0);
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
-
-
     }//GEN-LAST:event_AgregarStandComprarButtonActionPerformed
 
     private void EliminarStandComprarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarStandComprarButtonActionPerformed
