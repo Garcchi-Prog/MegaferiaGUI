@@ -119,37 +119,7 @@ public class ProgramController {
             return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
-    
-    public static Response addStandToBuy(String standSeleccionado, String contenidoActualTextArea) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
-
-    public static Response deleteStandFromBuy(String standAEliminar, String contenidoActualTextArea) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
-
-    public static Response addPublisherToBuy(String editorialSeleccionada, String contenidoActualTextArea) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
-
-    public static Response deletePublisherFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
-
-    public static Response buyStand(String standsContent, String publishersContent) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
-
+   
     
 
     public static ArrayList<Person> getPersonData() {

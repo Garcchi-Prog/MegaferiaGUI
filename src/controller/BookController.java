@@ -166,7 +166,7 @@ public class BookController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static Response addTo(String autor, String contenido) {
+    public static Response addAuthorTo(String autor, String contenido) {
         try {
             if (autor.trim().isEmpty() || autor.trim().equals("Seleccione uno...")) {
                 return new Response("Debe seleccionar un autor.", Status.BAD_REQUEST);

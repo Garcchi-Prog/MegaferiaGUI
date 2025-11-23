@@ -1516,7 +1516,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String autorSeleccionado = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
-        Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
+        Response response = BookController.addAuthorTo(autorSeleccionado, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
