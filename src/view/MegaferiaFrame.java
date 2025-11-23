@@ -1386,12 +1386,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
             Stand nuevoStand = (Stand) response.getObject();
             IDStandsComprarComboBox.addItem(nuevoStand.getId() + " - $" + nuevoStand.getPrice());
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-            IDStandsComprarComboBox.setSelectedIndex(0);
             IDStandTextField.setText("");
             PrecioStandTextField.setText("");
         }
@@ -1413,7 +1412,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
             Author nuevoAutor = (Author) response.getObject();
             AutoresLibroComboBox.addItem(nuevoAutor.getId() + " - " + nuevoAutor.getFullname());
 
@@ -1423,7 +1421,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             NombrePersonaTextField.setText("");
             ApellidoPersonaTextField.setText("");
 
-            AutoresLibroComboBox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_CrearAutorButtonActionPerformed
 
@@ -1441,13 +1438,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
             Manager nuevoGerente = (Manager) response.getObject();
             GerenteEditorialComboBox.addItem(nuevoGerente.getId() + " - " + nuevoGerente.getFullname());
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-            GerenteEditorialComboBox.setSelectedIndex(0);
             IDPersonaTextField.setText("");
             NombrePersonaTextField.setText("");
             ApellidoPersonaTextField.setText("");
@@ -1469,13 +1464,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
             Narrator nuevoNarrador = (Narrator) response.getObject();
             NarradorLibroComboBox.addItem(nuevoNarrador.getId() + " - " + nuevoNarrador.getFullname());
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-            NarradorLibroComboBox.setSelectedIndex(0);
             IDPersonaTextField.setText("");
             NombrePersonaTextField.setText("");
             ApellidoPersonaTextField.setText("");
@@ -1500,10 +1493,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             Publisher nuevaEditorial = (Publisher) response.getObject();
             EditorialLibroComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
             EditorialesComprarStandComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             GerenteEditorialComboBox.setSelectedIndex(0);
-            EditorialesComprarStandComboBox.setSelectedIndex(0);
             NITEditorialTextField.setText("");
             NombreEditorialTextField.setText("");
             DireccionEditorialTextField.setText("");
@@ -1525,6 +1518,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -1559,23 +1553,19 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
 
         String title = TituloLibroTextField.getText();
-        String authorData = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+       
         String authorsContent = AutoresLibroTextArea.getText();
         String isbn = ISBNLibroTextField.getText();
-
-        String genre = GeneroLibroComboBox.getItemAt(GeneroLibroComboBox.getSelectedIndex());
-
-        String format = FormatoLibroComboBox.getItemAt(FormatoLibroComboBox.getSelectedIndex());
-
         String valueStr = ValorLibroTextField.getText();
-        String publisherData = EditorialLibroComboBox.getItemAt(EditorialLibroComboBox.getSelectedIndex());
-
         String pagesStr = PaginasLibroTextField.getText();
         String copiesStr = EjemplaresLibroTextField.getText();
-
         String hyperlink = HipervinculoLibroTextField.getText();
-
         String durationStr = DuracionLibroTextField.getText();
+        
+        String genre = GeneroLibroComboBox.getItemAt(GeneroLibroComboBox.getSelectedIndex());
+        String authorData = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String format = FormatoLibroComboBox.getItemAt(FormatoLibroComboBox.getSelectedIndex());
+        String publisherData = EditorialLibroComboBox.getItemAt(EditorialLibroComboBox.getSelectedIndex());
         String narratorData = NarradorLibroComboBox.getItemAt(NarradorLibroComboBox.getSelectedIndex());
 
         boolean isPrinted = LibroImpresoRadioButton.isSelected();
@@ -1586,7 +1576,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
 
         if (response.getStatus() >= 500) {
-
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
 
@@ -1625,8 +1614,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             StandComprarTextArea.setText(contenidoActualTextArea + "\n" + standSeleccionado);
-            IDStandsComprarComboBox.setSelectedIndex(0);
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            
+            IDStandsComprarComboBox.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_AgregarStandComprarButtonActionPerformed
@@ -1660,9 +1651,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
-            EditorialesComprarStandComboBox.setSelectedIndex(0);
+            
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
+            EditorialesComprarStandComboBox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_AgEditorialComprarStandButtonActionPerformed
 
