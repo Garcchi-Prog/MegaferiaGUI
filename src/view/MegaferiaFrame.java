@@ -1606,6 +1606,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             FormatoLibroComboBox.setSelectedIndex(0);
             EditorialLibroComboBox.setSelectedIndex(0);
             NarradorLibroComboBox.setSelectedIndex(0);
+            AutoresLibroComboBox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_CrearLibroButtonActionPerformed
 
