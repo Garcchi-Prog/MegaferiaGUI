@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.Author;
 import model.Manager;
+import model.Narrator;
 import model.Person;
 import model.Publisher;
 
@@ -1458,6 +1459,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            Narrator nuevoNarrador = (Narrator) response.getObject();
+            NarradorLibroComboBox.addItem(nuevoNarrador.getId() + " - " + nuevoNarrador.getFullname());
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
