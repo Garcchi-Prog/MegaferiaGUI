@@ -172,7 +172,7 @@ public class BookController {
                 return new Response("Debe seleccionar un autor.", Status.BAD_REQUEST);
             }
 
-            if (contenido.trim().contentEquals(autor.trim())) {
+            if (contenido.trim().contains(autor.trim())) {
                 return new Response("Ese autor ya fue añadido.", Status.BAD_REQUEST);
             }
 
@@ -190,7 +190,7 @@ public class BookController {
                 return new Response("Debe seleccionar un autor.", Status.BAD_REQUEST);
             }
 
-            if (!contenido.trim().contentEquals(autor.trim())) {
+            if (!contenido.trim().contains(autor.trim())) {
                 return new Response("Ese autor no ha sido añadido.", Status.BAD_REQUEST);
             }
 
