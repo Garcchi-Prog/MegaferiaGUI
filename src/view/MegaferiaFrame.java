@@ -1385,7 +1385,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             Stand nuevoStand = (Stand) response.getObject();
             IDStandsComprarComboBox.addItem(nuevoStand.getId() + " - $" + nuevoStand.getPrice());
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
@@ -1412,7 +1412,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             Author nuevoAutor = (Author) response.getObject();
             AutoresLibroComboBox.addItem(nuevoAutor.getId() + " - " + nuevoAutor.getFullname());
 
@@ -1440,7 +1440,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             Manager nuevoGerente = (Manager) response.getObject();
             GerenteEditorialComboBox.addItem(nuevoGerente.getId() + " - " + nuevoGerente.getFullname());
 
@@ -1468,7 +1468,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             Narrator nuevoNarrador = (Narrator) response.getObject();
             NarradorLibroComboBox.addItem(nuevoNarrador.getId() + " - " + nuevoNarrador.getFullname());
 
@@ -1516,14 +1516,17 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
         Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
-
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
+            if (contenidoActualTextArea.trim().isEmpty()) {
+                AutoresLibroTextArea.setText(autorSeleccionado + "\n");
+            } else {
+                AutoresLibroTextArea.setText(contenidoActualTextArea + autorSeleccionado + "\n");
+            }
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -1546,12 +1549,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             String[] temp = contenidoActualTextArea.split("\n");
             for (String temp1 : temp) {
                 if (!temp1.trim().equals(autorEliminar.trim())) {
-                    nuevoContenidoTextArea += temp1;
+                    nuevoContenidoTextArea += temp1 + "\n";
                 }
             }
             AutoresLibroTextArea.setText(nuevoContenidoTextArea);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
         }
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
