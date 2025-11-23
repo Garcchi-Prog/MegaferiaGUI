@@ -1702,7 +1702,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarStandButtonActionPerformed
 
     private void ConsultarEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarEditorialButtonActionPerformed
-        ArrayList<Object[]> dataRows = ProgramController.getPublisherData();
+        ArrayList<Object[]> dataRows = PublisherController.getData();
 
         DefaultTableModel model = (DefaultTableModel) ListaEditorialesTable.getModel();
         model.setRowCount(0);
