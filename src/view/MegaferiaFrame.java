@@ -89,7 +89,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         AgregarAutorLibroButton = new javax.swing.JButton();
         EliminarAutorLibroButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        LibroTextArea = new javax.swing.JTextArea();
+        AutoresLibroTextArea = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         IDStandsComprarComboBox = new javax.swing.JComboBox<>();
         EditorialesComprarStandComboBox = new javax.swing.JComboBox<>();
@@ -554,11 +554,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             }
         });
 
-        LibroTextArea.setColumns(20);
-        LibroTextArea.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        LibroTextArea.setRows(5);
-        LibroTextArea.setEnabled(false);
-        jScrollPane2.setViewportView(LibroTextArea);
+        AutoresLibroTextArea.setColumns(20);
+        AutoresLibroTextArea.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AutoresLibroTextArea.setRows(5);
+        AutoresLibroTextArea.setEnabled(false);
+        jScrollPane2.setViewportView(AutoresLibroTextArea);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1494,45 +1494,28 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
 
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
-        String autorSeleccionado = (String) AutoresLibroComboBox.getSelectedItem();
-        String contenidoActualTextArea = LibroTextArea.getText();
+        String autorSeleccionado = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
         Response response = BookController.addToBook(autorSeleccionado, contenidoActualTextArea);
 
-        if (response.getStatus() >= 500) {
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
-        } else if (response.getStatus() >= 400) {
-
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-        }
-
+        
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
-        String autorEliminar = (String) AutoresLibroComboBox.getSelectedItem();
-        String contenidoActualTextArea = LibroTextArea.getText();
+        String autorEliminar = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
         Response response = BookController.DeleteFromBook(autorEliminar, contenidoActualTextArea);
 
-        if (response.getStatus() >= 500) {
-
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
-        } else if (response.getStatus() >= 400) {
-
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-        }
+        
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
 
         String title = TituloLibroTextField.getText();
         String authorData = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
-        String authorsContent = LibroTextArea.getText();
+        String authorsContent = AutoresLibroTextArea.getText();
         String isbn = ISBNLibroTextField.getText();
 
         String genre = GeneroLibroComboBox.getItemAt(GeneroLibroComboBox.getSelectedIndex());
@@ -1573,7 +1556,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             EjemplaresLibroTextField.setText("");
             HipervinculoLibroTextField.setText("");
             DuracionLibroTextField.setText("");
-            LibroTextArea.setText("");
+            AutoresLibroTextArea.setText("");
 
             GeneroLibroComboBox.setSelectedIndex(0);
             FormatoLibroComboBox.setSelectedIndex(0);
@@ -1784,6 +1767,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> AutorConsultaComboBox;
     private javax.swing.JTable AutoresConMasLibrosConsultaTable;
     private javax.swing.JComboBox<String> AutoresLibroComboBox;
+    private javax.swing.JTextArea AutoresLibroTextArea;
     private javax.swing.JButton ComprarStandButton;
     private javax.swing.JButton ConsultarAutorButton;
     private javax.swing.JButton ConsultarAutoresMasLibrosButton;
@@ -1820,7 +1804,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton LibroDigitalRadioButton;
     private javax.swing.JRadioButton LibroImpresoRadioButton;
     private javax.swing.JComboBox<String> LibroSeleccionarComboBox;
-    private javax.swing.JTextArea LibroTextArea;
     private javax.swing.JTable ListaEditorialesTable;
     private javax.swing.JTable ListaLibrosTable;
     private javax.swing.JTable ListaPersonasTable;
