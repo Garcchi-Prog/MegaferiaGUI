@@ -23,7 +23,7 @@ public class Narrator extends Person {
     @Override
     public String getRoleType() {
         return "Narrador";
-    }
+    }   
 
 
     @Override

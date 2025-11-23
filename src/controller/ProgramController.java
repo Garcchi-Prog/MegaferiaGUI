@@ -159,9 +159,7 @@ public class ProgramController {
 
     }
 
-    public static ArrayList<Object[]> getPublisherData() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 
     public static ArrayList<Person> getPersonData() {
         INarratorRepository narRepo = Megaferia.getInstance().getNarratorRepository();

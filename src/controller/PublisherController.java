@@ -89,7 +89,7 @@ public class PublisherController {
 
     }
 
-    public static ArrayList<Object[]> getData() {
+    public static ArrayList<Publisher> getData() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -1512,7 +1512,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
 
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
-        String autorSeleccionado =  AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String autorSeleccionado = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
         Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
@@ -1530,7 +1530,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
-        String autorEliminar =  AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String autorEliminar = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
         String nuevoContenidoTextArea = "";
 
@@ -1658,7 +1658,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-             EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
+            EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
             EditorialesComprarStandComboBox.setSelectedIndex(0);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
@@ -1702,13 +1702,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarStandButtonActionPerformed
 
     private void ConsultarEditorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarEditorialButtonActionPerformed
-        ArrayList<Object[]> dataRows = PublisherController.getData();
+        ArrayList<Publisher> editoriales = PublisherController.getData();
 
         DefaultTableModel model = (DefaultTableModel) ListaEditorialesTable.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0); 
 
-        for (Object[] row : dataRows) {
-            model.addRow(row);
+        for (Publisher publisher : editoriales) {
+            Object[] rowData = new Object[5];
+            rowData[0] = publisher.getNit();
+            rowData[1] = publisher.getName();
+            rowData[2] = publisher.getAddress();
+            rowData[3] = publisher.getManager().getFullname(); // nombre completo del gerente
+            rowData[4] = publisher.getStandQuantity(); 
+
+            model.addRow(rowData);
         }
     }//GEN-LAST:event_ConsultarEditorialButtonActionPerformed
 
