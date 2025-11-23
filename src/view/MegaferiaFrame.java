@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import model.Author;
 import model.Manager;
 import model.Person;
 
@@ -55,40 +56,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         CrearEditorialButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         GerenteEditorialComboBox = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        TituloLibroTextField = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        ISBNLibroTextField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        GeneroLibroComboBox = new javax.swing.JComboBox<>();
-        CrearLibroButton = new javax.swing.JButton();
-        AutoresLibroComboBox = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        LibroImpresoRadioButton = new javax.swing.JRadioButton();
-        LibroDigitalRadioButton = new javax.swing.JRadioButton();
-        AudioLibroRadioButton = new javax.swing.JRadioButton();
-        jLabel15 = new javax.swing.JLabel();
-        FormatoLibroComboBox = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
-        ValorLibroTextField = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        EditorialLibroComboBox = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
-        PaginasLibroTextField = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        EjemplaresLibroTextField = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        HipervinculoLibroTextField = new javax.swing.JTextField();
-        DuracionLibroTextField = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        NarradorLibroComboBox = new javax.swing.JComboBox<>();
-        AgregarAutorLibroButton = new javax.swing.JButton();
-        EliminarAutorLibroButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        LibroTextArea = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         IDStandsComprarComboBox = new javax.swing.JComboBox<>();
         EditorialesComprarStandComboBox = new javax.swing.JComboBox<>();
@@ -135,6 +102,40 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         AutoresConMasLibrosConsultaTable = new javax.swing.JTable();
         ConsultarAutoresMasLibrosButton = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        TituloLibroTextField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        ISBNLibroTextField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        GeneroLibroComboBox = new javax.swing.JComboBox<>();
+        CrearLibroButton = new javax.swing.JButton();
+        AutoresLibroComboBox = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        LibroImpresoRadioButton = new javax.swing.JRadioButton();
+        LibroDigitalRadioButton = new javax.swing.JRadioButton();
+        AudioLibroRadioButton = new javax.swing.JRadioButton();
+        jLabel15 = new javax.swing.JLabel();
+        FormatoLibroComboBox = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        ValorLibroTextField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        EditorialLibroComboBox = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        PaginasLibroTextField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        EjemplaresLibroTextField = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        HipervinculoLibroTextField = new javax.swing.JTextField();
+        DuracionLibroTextField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        NarradorLibroComboBox = new javax.swing.JComboBox<>();
+        AgregarAutorLibroButton = new javax.swing.JButton();
+        EliminarAutorLibroButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AutoresLibroTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -394,322 +395,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         );
 
         OpcionesTabbedPane.addTab("Editorial", jPanel4);
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel10.setText("Titulo");
-
-        TituloLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        TituloLibroTextField.setToolTipText("");
-        TituloLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TituloLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel11.setText("Autores");
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel12.setText("ISBN");
-
-        ISBNLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        ISBNLibroTextField.setToolTipText("");
-        ISBNLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ISBNLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel13.setText("Genero");
-
-        GeneroLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        GeneroLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Fantasía urbana", "Ciencia ficción distópica", "Realismo mágico", "Romance histórico", "Thriller psicológico", "Ficción filosófica", "Aventura steampunk", "Terror gótico", "No ficción narrativa", "Ficción postapocalíptica" }));
-
-        CrearLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        CrearLibroButton.setText("Crear");
-        CrearLibroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearLibroButtonActionPerformed(evt);
-            }
-        });
-
-        AutoresLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        AutoresLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
-
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel14.setText("Tipo");
-
-        LibroImpresoRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        LibroImpresoRadioButton.setText("Impreso");
-        LibroImpresoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LibroImpresoRadioButtonActionPerformed(evt);
-            }
-        });
-
-        LibroDigitalRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        LibroDigitalRadioButton.setText("Digital");
-        LibroDigitalRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LibroDigitalRadioButtonActionPerformed(evt);
-            }
-        });
-
-        AudioLibroRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        AudioLibroRadioButton.setText("Audio Libro");
-        AudioLibroRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AudioLibroRadioButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel15.setText("Formato");
-
-        FormatoLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        FormatoLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
-
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel16.setText("Valor");
-
-        ValorLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        ValorLibroTextField.setToolTipText("");
-        ValorLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValorLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel17.setText("Editorial");
-
-        EditorialLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        EditorialLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
-
-        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel18.setText("Nro. Ejemplares");
-
-        PaginasLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        PaginasLibroTextField.setToolTipText("");
-        PaginasLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaginasLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel19.setText("Nro. Paginas");
-
-        EjemplaresLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        EjemplaresLibroTextField.setToolTipText("");
-        EjemplaresLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EjemplaresLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel20.setText("Hipervinculo");
-
-        HipervinculoLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        HipervinculoLibroTextField.setToolTipText("");
-        HipervinculoLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HipervinculoLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        DuracionLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        DuracionLibroTextField.setToolTipText("");
-        DuracionLibroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DuracionLibroTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel21.setText("Duracion");
-
-        jLabel22.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel22.setText("Narrador");
-
-        NarradorLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        NarradorLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
-
-        AgregarAutorLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        AgregarAutorLibroButton.setText("Agregar Autor");
-        AgregarAutorLibroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarAutorLibroButtonActionPerformed(evt);
-            }
-        });
-
-        EliminarAutorLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        EliminarAutorLibroButton.setText("Eliminar Autor");
-        EliminarAutorLibroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarAutorLibroButtonActionPerformed(evt);
-            }
-        });
-
-        LibroTextArea.setColumns(20);
-        LibroTextArea.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        LibroTextArea.setRows(5);
-        LibroTextArea.setEnabled(false);
-        jScrollPane2.setViewportView(LibroTextArea);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(345, 345, 345)
-                .addComponent(CrearLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PaginasLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EjemplaresLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel20)
-                        .addGap(16, 16, 16)
-                        .addComponent(HipervinculoLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel21))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NarradorLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DuracionLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(ValorLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(FormatoLibroComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                                    .addComponent(LibroImpresoRadioButton)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(LibroDigitalRadioButton)))
-                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(TituloLibroTextField)
-                                                .addComponent(ISBNLibroTextField)
-                                                .addComponent(GeneroLibroComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(AutoresLibroComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(AudioLibroRadioButton)
-                                            .addComponent(EliminarAutorLibroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(AgregarAutorLibroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(EditorialLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(TituloLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(AutoresLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(ISBNLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(17, 17, 17)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
-                                    .addComponent(GeneroLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(AgregarAutorLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EliminarAutorLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(LibroImpresoRadioButton)
-                            .addComponent(LibroDigitalRadioButton)
-                            .addComponent(AudioLibroRadioButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(FormatoLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(ValorLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(EditorialLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel20)
-                            .addComponent(HipervinculoLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(EjemplaresLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PaginasLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(NarradorLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(DuracionLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(CrearLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        OpcionesTabbedPane.addTab("Libro", jPanel5);
 
         IDStandsComprarComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         IDStandsComprarComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
@@ -1228,6 +913,327 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         OpcionesTabbedPane.addTab("Consultas Adicionales", jPanel11);
 
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel10.setText("Titulo");
+
+        TituloLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        TituloLibroTextField.setToolTipText("");
+        TituloLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TituloLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel11.setText("Autores");
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel12.setText("ISBN");
+
+        ISBNLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        ISBNLibroTextField.setToolTipText("");
+        ISBNLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ISBNLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel13.setText("Genero");
+
+        GeneroLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        GeneroLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Fantasía urbana", "Ciencia ficción distópica", "Realismo mágico", "Romance histórico", "Thriller psicológico", "Ficción filosófica", "Aventura steampunk", "Terror gótico", "No ficción narrativa", "Ficción postapocalíptica" }));
+
+        CrearLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        CrearLibroButton.setText("Crear");
+        CrearLibroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearLibroButtonActionPerformed(evt);
+            }
+        });
+
+        AutoresLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AutoresLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+        AutoresLibroComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AutoresLibroComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel14.setText("Tipo");
+
+        LibroImpresoRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LibroImpresoRadioButton.setText("Impreso");
+        LibroImpresoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LibroImpresoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        LibroDigitalRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LibroDigitalRadioButton.setText("Digital");
+        LibroDigitalRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LibroDigitalRadioButtonActionPerformed(evt);
+            }
+        });
+
+        AudioLibroRadioButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AudioLibroRadioButton.setText("Audio Libro");
+        AudioLibroRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AudioLibroRadioButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel15.setText("Formato");
+
+        FormatoLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        FormatoLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel16.setText("Valor");
+
+        ValorLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        ValorLibroTextField.setToolTipText("");
+        ValorLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValorLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel17.setText("Editorial");
+
+        EditorialLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        EditorialLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel18.setText("Nro. Ejemplares");
+
+        PaginasLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        PaginasLibroTextField.setToolTipText("");
+        PaginasLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PaginasLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel19.setText("Nro. Paginas");
+
+        EjemplaresLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        EjemplaresLibroTextField.setToolTipText("");
+        EjemplaresLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EjemplaresLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel20.setText("Hipervinculo");
+
+        HipervinculoLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        HipervinculoLibroTextField.setToolTipText("");
+        HipervinculoLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HipervinculoLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        DuracionLibroTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        DuracionLibroTextField.setToolTipText("");
+        DuracionLibroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DuracionLibroTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel21.setText("Duracion");
+
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel22.setText("Narrador");
+
+        NarradorLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        NarradorLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+
+        AgregarAutorLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AgregarAutorLibroButton.setText("Agregar Autor");
+        AgregarAutorLibroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarAutorLibroButtonActionPerformed(evt);
+            }
+        });
+
+        EliminarAutorLibroButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        EliminarAutorLibroButton.setText("Eliminar Autor");
+        EliminarAutorLibroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarAutorLibroButtonActionPerformed(evt);
+            }
+        });
+
+        AutoresLibroTextArea.setColumns(20);
+        AutoresLibroTextArea.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AutoresLibroTextArea.setRows(5);
+        AutoresLibroTextArea.setEnabled(false);
+        jScrollPane2.setViewportView(AutoresLibroTextArea);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(345, 345, 345)
+                .addComponent(CrearLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PaginasLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EjemplaresLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel20)
+                        .addGap(16, 16, 16)
+                        .addComponent(HipervinculoLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel21))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NarradorLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DuracionLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(ValorLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(FormatoLibroComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                                    .addComponent(LibroImpresoRadioButton)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(LibroDigitalRadioButton)))
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(TituloLibroTextField)
+                                                .addComponent(ISBNLibroTextField)
+                                                .addComponent(GeneroLibroComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(AutoresLibroComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(AudioLibroRadioButton)
+                                            .addComponent(EliminarAutorLibroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(AgregarAutorLibroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EditorialLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(TituloLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(AutoresLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(ISBNLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(GeneroLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(AgregarAutorLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(EliminarAutorLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(LibroImpresoRadioButton)
+                            .addComponent(LibroDigitalRadioButton)
+                            .addComponent(AudioLibroRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(FormatoLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(ValorLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(EditorialLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel20)
+                            .addComponent(HipervinculoLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(EjemplaresLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PaginasLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(NarradorLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(DuracionLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(CrearLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        OpcionesTabbedPane.addTab("Libro", jPanel5);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1404,11 +1410,16 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            Author nuevoAutor = (Author) response.getObject();
+            AutoresLibroComboBox.addItem(nuevoAutor.getId() + " - " + nuevoAutor.getFullname());
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             IDPersonaTextField.setText("");
             NombrePersonaTextField.setText("");
             ApellidoPersonaTextField.setText("");
+
+            AutoresLibroComboBox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_CrearAutorButtonActionPerformed
 
@@ -1429,7 +1440,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             Manager nuevoGerente = (Manager) response.getObject();
             GerenteEditorialComboBox.addItem(nuevoGerente.getId() + " - " + nuevoGerente.getFullname());
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
+            GerenteEditorialComboBox.setSelectedIndex(0);
             IDPersonaTextField.setText("");
             NombrePersonaTextField.setText("");
             ApellidoPersonaTextField.setText("");
@@ -1451,7 +1462,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-          
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             IDPersonaTextField.setText("");
@@ -1475,7 +1486,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             NITEditorialTextField.setText("");
@@ -1489,9 +1500,9 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
         String autorSeleccionado = (String) AutoresLibroComboBox.getSelectedItem();
-        String contenidoActualTextArea = LibroTextArea.getText();
+        String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
-        Response response = ProgramController.addAuthorToBook(autorSeleccionado, contenidoActualTextArea);
+        Response response = BookController.addToBook(autorSeleccionado, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1506,9 +1517,9 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
         String autorEliminar = (String) AutoresLibroComboBox.getSelectedItem();
-        String contenidoActualTextArea = LibroTextArea.getText();
+        String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
-        Response response = ProgramController.DeleteAuthorFromBook(autorEliminar, contenidoActualTextArea);
+        Response response = BookController.DeleteFromBook(autorEliminar, contenidoActualTextArea);
 
         if (response.getStatus() >= 500) {
 
@@ -1525,14 +1536,16 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
 
         String title = TituloLibroTextField.getText();
-        String authorsContent = LibroTextArea.getText();
+        String authorData = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String authorsContent = AutoresLibroTextArea.getText();
         String isbn = ISBNLibroTextField.getText();
 
-        String genre = (String) GeneroLibroComboBox.getSelectedItem();
-        String format = (String) FormatoLibroComboBox.getSelectedItem();
+        String genre = GeneroLibroComboBox.getItemAt(GeneroLibroComboBox.getSelectedIndex());
+
+        String format = FormatoLibroComboBox.getItemAt(FormatoLibroComboBox.getSelectedIndex());
 
         String valueStr = ValorLibroTextField.getText();
-        String publisherData = (String) EditorialLibroComboBox.getSelectedItem();
+        String publisherData = EditorialLibroComboBox.getItemAt(EditorialLibroComboBox.getSelectedIndex());
 
         String pagesStr = PaginasLibroTextField.getText();
         String copiesStr = EjemplaresLibroTextField.getText();
@@ -1540,13 +1553,13 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String hyperlink = HipervinculoLibroTextField.getText();
 
         String durationStr = DuracionLibroTextField.getText();
-        String narratorData = (String) NarradorLibroComboBox.getSelectedItem();
+        String narratorData = NarradorLibroComboBox.getItemAt(NarradorLibroComboBox.getSelectedIndex());
 
         boolean isPrinted = LibroImpresoRadioButton.isSelected();
         boolean isDigital = LibroDigitalRadioButton.isSelected();
         boolean isAudiobook = AudioLibroRadioButton.isSelected();
 
-        Response response = BookController.register(title, authorsContent, isbn, genre, format, valueStr, publisherData,
+        Response response = BookController.register(title, authorsContent, authorData, isbn, genre, format, valueStr, publisherData,
                 isPrinted, pagesStr, copiesStr, isDigital, hyperlink, isAudiobook, durationStr, narratorData);
 
         if (response.getStatus() >= 500) {
@@ -1565,7 +1578,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             EjemplaresLibroTextField.setText("");
             HipervinculoLibroTextField.setText("");
             DuracionLibroTextField.setText("");
-            LibroTextArea.setText("");
+            AutoresLibroTextArea.setText("");
 
             GeneroLibroComboBox.setSelectedIndex(0);
             FormatoLibroComboBox.setSelectedIndex(0);
@@ -1767,6 +1780,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GerenteEditorialComboBoxActionPerformed
 
+    private void AutoresLibroComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AutoresLibroComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AutoresLibroComboBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgEditorialComprarStandButton;
     private javax.swing.JButton AgregarAutorLibroButton;
@@ -1776,6 +1793,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> AutorConsultaComboBox;
     private javax.swing.JTable AutoresConMasLibrosConsultaTable;
     private javax.swing.JComboBox<String> AutoresLibroComboBox;
+    private javax.swing.JTextArea AutoresLibroTextArea;
     private javax.swing.JButton ComprarStandButton;
     private javax.swing.JButton ConsultarAutorButton;
     private javax.swing.JButton ConsultarAutoresMasLibrosButton;
@@ -1812,7 +1830,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton LibroDigitalRadioButton;
     private javax.swing.JRadioButton LibroImpresoRadioButton;
     private javax.swing.JComboBox<String> LibroSeleccionarComboBox;
-    private javax.swing.JTextArea LibroTextArea;
     private javax.swing.JTable ListaEditorialesTable;
     private javax.swing.JTable ListaLibrosTable;
     private javax.swing.JTable ListaPersonasTable;

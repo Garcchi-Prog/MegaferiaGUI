@@ -26,7 +26,7 @@ import modelrepository.IPublisherRepository;
  */
 public class BookController {
     
-    public static Response register(String title, String authorsContent, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
+    public static Response register(String title, String authorsContent,String authorData, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
         try {
             if (title.trim().isEmpty() || genre.trim().isEmpty() || format.trim().isEmpty() || valueStr.trim().isEmpty()) {
                 return new Response("Los campos generales no deben ser vacíos", Status.BAD_REQUEST);
@@ -166,11 +166,11 @@ public class BookController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static Response addAuthorToBook(String autorSeleccionado, String contenidoActualTextArea) {
+    public static Response addToBook(String autorSeleccionado, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public static Response DeleteAuthorFromBook(String autorEliminar, String contenidoActualTextArea) {
+    public static Response DeleteFromBook(String autorEliminar, String contenidoActualTextArea) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
