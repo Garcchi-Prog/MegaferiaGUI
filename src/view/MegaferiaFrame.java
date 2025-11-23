@@ -1499,18 +1499,52 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String autorSeleccionado = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
-        Response response = BookController.addToBook(autorSeleccionado, contenidoActualTextArea);
+        Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
 
+<<<<<<< Updated upstream
         
+=======
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+>>>>>>> Stashed changes
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
         String autorEliminar = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
+        String nuevoContenidoTextArea = "";
 
-        Response response = BookController.DeleteFromBook(autorEliminar, contenidoActualTextArea);
+        Response response = BookController.deleteFrom(autorEliminar, contenidoActualTextArea);
 
+<<<<<<< Updated upstream
         
+=======
+        if (response.getStatus() >= 500) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            String[] temp = contenidoActualTextArea.split("\n");
+            for (String temp1 : temp) {
+                if (!temp1.trim().equals(autorEliminar.trim())) {
+                    nuevoContenidoTextArea += temp1; 
+                }
+            }
+            AutoresLibroTextArea.setText(nuevoContenidoTextArea);
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+>>>>>>> Stashed changes
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed

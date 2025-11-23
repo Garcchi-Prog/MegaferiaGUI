@@ -27,8 +27,6 @@ import modelrepository.IBookRepository;
 
 public class ProgramController {
 
-    
-
     public static Response registerAuthor(String idStr, String firstname, String lastname) {
         try {
             if (firstname.trim().isEmpty() || lastname.trim().isEmpty()) {
@@ -130,11 +128,7 @@ public class ProgramController {
             return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
         }
     }
-
     
-
-    
-
     public static Response addStandToBuy(String standSeleccionado, String contenidoActualTextArea) {
 
         throw new UnsupportedOperationException("Not supported yet.");

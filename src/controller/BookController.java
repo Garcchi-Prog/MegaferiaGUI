@@ -25,8 +25,8 @@ import modelrepository.IPublisherRepository;
  * @author aesme
  */
 public class BookController {
-    
-    public static Response register(String title, String authorsContent,String authorData, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
+
+    public static Response register(String title, String authorsContent, String authorData, String bn, String genre, String format, String valueStr, String publisherData, boolean printed, String pagesStr, String copiesStr, boolean digital, String hyperlink, boolean audiobook, String durationStr, String narratorData) {
         try {
             if (title.trim().isEmpty() || genre.trim().isEmpty() || format.trim().isEmpty() || valueStr.trim().isEmpty()) {
                 return new Response("Los campos generales no deben ser vacíos", Status.BAD_REQUEST);
@@ -153,7 +153,7 @@ public class BookController {
             return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     public static ArrayList<Object[]> getBookData(String searchCriteria) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -166,12 +166,39 @@ public class BookController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public static Response addToBook(String autorSeleccionado, String contenidoActualTextArea) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Response addTo(String autor, String contenido) {
+        try {
+            if (autor.trim().isEmpty() || autor.trim().equals("Seleccione uno...")) {
+                return new Response("Debe seleccionar un autor.", Status.BAD_REQUEST);
+            }
+
+            if (contenido.trim().contentEquals(autor.trim())) {
+                return new Response("Ese autor ya fue añadido.", Status.BAD_REQUEST);
+            }
+
+            return new Response("Autor añadido correctamente", Status.OK);
+
+        } catch (Exception e) {
+            return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
-    public static Response DeleteFromBook(String autorEliminar, String contenidoActualTextArea) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static Response deleteFrom(String autor, String contenido) {
+        try {
+            if (autor.trim().isEmpty() || autor.trim().equals("Seleccione uno...")) {
+                return new Response("Debe seleccionar un autor.", Status.BAD_REQUEST);
+            }
+
+            if (!contenido.trim().contentEquals(autor.trim())) {
+                return new Response("Ese autor no ha sido añadido.", Status.BAD_REQUEST);
+            }
+
+            return new Response("Autor eliminado correctamente", Status.OK);
+
+        } catch (Exception e) {
+            return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
