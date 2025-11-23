@@ -15,6 +15,7 @@ import model.Manager;
 import model.Narrator;
 import model.Person;
 import model.Publisher;
+import model.Stand;
 
 public class MegaferiaFrame extends javax.swing.JFrame {
 
@@ -1384,8 +1385,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            Stand nuevoStand = (Stand) response.getObject();
+            IDStandsComprarComboBox.addItem(nuevoStand.getId()+ " - $" + nuevoStand.getPrice());
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
+            
+            IDStandsComprarComboBox.setSelectedIndex(0);
             IDStandTextField.setText("");
             PrecioStandTextField.setText("");
         }
