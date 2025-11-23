@@ -154,7 +154,7 @@ public class BookController {
         }
     }
 
-    public static ArrayList<Object[]> getData(String searchCriteria) {
+    public static ArrayList<Book> getData() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

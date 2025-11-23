@@ -7,23 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import model.Megaferia;
-import model.Stand;
 import model.Author;
 import model.Manager;
 import model.Narrator;
-import model.Publisher;
-import model.Book;
-import model.PrintedBook;
-import model.Audiobook;
-import model.DigitalBook;
 import model.Person;
 
-import modelrepository.IStandRepository;
 import modelrepository.IAuthorRepository;
 import modelrepository.IManagerRepository;
 import modelrepository.INarratorRepository;
-import modelrepository.IPublisherRepository;
-import modelrepository.IBookRepository;
 
 public class ProgramController {
 
@@ -175,13 +166,9 @@ public class ProgramController {
         return persons;
     }
 
-    public static ArrayList<Object[]> getStandData() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 
-    public static ArrayList<Object[]> getBookData(String searchCriteria) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   
 
     public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
         throw new UnsupportedOperationException("Not supported yet.");

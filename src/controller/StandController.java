@@ -6,6 +6,7 @@ package controller;
 
 import controller.utils.Response;
 import controller.utils.Status;
+import java.util.ArrayList;
 import model.Megaferia;
 import model.Stand;
 import modelrepository.IStandRepository;
@@ -67,6 +68,10 @@ public class StandController {
 
         throw new UnsupportedOperationException("Not supported yet.");
 
+    }
+
+    public static ArrayList<Stand> getData() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.Author;
+import model.Book;
 import model.Manager;
 import model.Narrator;
 import model.Person;
@@ -1705,15 +1706,15 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         ArrayList<Publisher> editoriales = PublisherController.getData();
 
         DefaultTableModel model = (DefaultTableModel) ListaEditorialesTable.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
 
         for (Publisher publisher : editoriales) {
             Object[] rowData = new Object[5];
             rowData[0] = publisher.getNit();
             rowData[1] = publisher.getName();
             rowData[2] = publisher.getAddress();
-            rowData[3] = publisher.getManager().getFullname(); // nombre completo del gerente
-            rowData[4] = publisher.getStandQuantity(); 
+            rowData[3] = publisher.getManager().getFullname();
+            rowData[4] = publisher.getStandQuantity();
 
             model.addRow(rowData);
         }
@@ -1724,14 +1725,13 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         ArrayList<Person> dataRows = ProgramController.getPersonData();
 
         DefaultTableModel model = (DefaultTableModel) ListaPersonasTable.getModel();
-        model.setRowCount(0); // Limpiar filas
+        model.setRowCount(0);
 
         for (Person person : dataRows) {
 
             Object[] rowData = new Object[5];
             rowData[0] = person.getId();
             rowData[1] = person.getFullname();
-
             rowData[2] = person.getRoleType();
             rowData[3] = person.getPublisherInfo();
             rowData[4] = person.getBookCount();
@@ -1742,27 +1742,47 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarStandButtonActionPerformed
 
-        ArrayList<Object[]> dataRows = ProgramController.getStandData();
+        ArrayList<Stand> dataRows = StandController.getData();
 
         DefaultTableModel model = (DefaultTableModel) ListaStandsTable.getModel();
         model.setRowCount(0);
 
-        for (Object[] row : dataRows) {
-            model.addRow(row);
+        for (Stand stand : dataRows) {
+
+            Object[] rowData = new Object[4];
+            rowData[0] = stand.getId();
+            rowData[1] = stand.getPrice();
+            //rowData[2] = stand.getComprado(); //
+            rowData[3] = stand.getPublishers();
+
+            model.addRow(rowData);
         }
     }//GEN-LAST:event_ConsultarStandButtonActionPerformed
 
     private void ConsultarLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarLibroButtonActionPerformed
 
-        String searchCriteria = (String) LibroSeleccionarComboBox.getSelectedItem();
-
-        ArrayList<Object[]> dataRows = ProgramController.getBookData(searchCriteria);
+        ArrayList<Book> dataRows = BookController.getData();
 
         DefaultTableModel model = (DefaultTableModel) ListaLibrosTable.getModel();
         model.setRowCount(0);
 
-        for (Object[] row : dataRows) {
-            model.addRow(row);
+        for (Book book : dataRows) {
+            Object[] rowData = new Object[12];
+            
+            rowData[0] = book.getTitle();
+            rowData[1] = book.getAuthors();
+            rowData[2] = book.getIsbn();
+            rowData[3] = book.getGenre();
+            rowData[4] = book.getFormat();
+            rowData[5] = book.getValue();
+            rowData[6] = book.getPublisher();
+            //rowData[7] = book.getBookCount();
+            //rowData[8] = book.getBookCount();
+            //rowData[9] = book.getBookCount();
+            //rowData[10] = book.getBookCount();
+            //rowData[11] = book.getBookCount();
+
+            model.addRow(rowData);
         }
     }//GEN-LAST:event_ConsultarLibroButtonActionPerformed
 
