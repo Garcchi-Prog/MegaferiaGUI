@@ -194,6 +194,7 @@ public class BookController {
                 sendBooks[9] = (libro instanceof DigitalBook) ? DigitalBook.class.cast(libro).getHyperlink() : "";
                 sendBooks[10] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getNarrador() : "";
                 sendBooks[11] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getDuration() : "";
+                books.add(sendBooks);
             }
         }
 
@@ -204,7 +205,35 @@ public class BookController {
     }
 
     public static ArrayList<Object[]> getBooksByFormat(String searchFormat) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (searchFormat.trim().equals("Seleccione uno...")) {
+            return new ArrayList<>();
+        }
+        
+        IBookRepository bookRepo = Megaferia.getInstance().getBookRepository();
+        ArrayList<Object[]> books = new ArrayList<>();
+        
+        for (Book libro : bookRepo.obtenerTodos()) {
+            if (libro.getFormat().equals(searchFormat)) {
+                Object[] sendBooks = new Object[12];
+                sendBooks[0] = libro.getTitle();
+                sendBooks[1] = libro.getAuthors();
+                sendBooks[2] = libro.getIsbn();
+                sendBooks[3] = libro.getGenre();
+                sendBooks[4] = libro.getFormat();
+                sendBooks[5] = libro.getValue();
+                sendBooks[6] = libro.getPublisher();
+                sendBooks[7] = (libro instanceof PrintedBook) ? PrintedBook.class.cast(libro).getCopies() : "";
+                sendBooks[8] = (libro instanceof PrintedBook) ? PrintedBook.class.cast(libro).getPages() : "";
+                sendBooks[9] = (libro instanceof DigitalBook) ? DigitalBook.class.cast(libro).getHyperlink() : "";
+                sendBooks[10] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getNarrador() : "";
+                sendBooks[11] = (libro instanceof Audiobook) ? Audiobook.class.cast(libro).getDuration() : "";
+                books.add(sendBooks);
+            }
+        }
+        
+        Collections.sort(books, new SortByISBN());
+        
+        return books;
     }
 
     public static Response addAuthorTo(String autor, String contenido) {
