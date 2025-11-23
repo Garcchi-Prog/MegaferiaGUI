@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Author;
 import model.Manager;
 import model.Person;
+import model.Publisher;
 
 public class MegaferiaFrame extends javax.swing.JFrame {
 
@@ -1481,7 +1482,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
+            Publisher nuevaEditorial = (Publisher) response.getObject();
+            EditorialLibroComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             NITEditorialTextField.setText("");
