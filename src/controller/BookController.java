@@ -96,7 +96,7 @@ public class BookController {
                 return new Response("Debe seleccionar una editorial", Status.BAD_REQUEST);
             }
 
-            String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
+            String publisherNit = publisherData.split(" - ")[0].trim(); 
             Publisher selectedPublisher = null;
             IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
 
