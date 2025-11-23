@@ -120,8 +120,6 @@ public class ProgramController {
         }
     }
    
-    
-
     public static ArrayList<Person> getPersonData() {
         INarratorRepository narRepo = Megaferia.getInstance().getNarratorRepository();
         IAuthorRepository auRepo = Megaferia.getInstance().getAuthorRepository();
@@ -135,10 +133,6 @@ public class ProgramController {
         Collections.sort(persons, new SortByID());
         return persons;
     }
-
-    
-
-   
 
     public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -154,14 +148,6 @@ public class ProgramController {
 
     public static ArrayList<Object[]> getPublisherNames() {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public static Response addAuthorToBook(String autorSeleccionado, String contenidoActualTextArea) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static Response DeleteAuthorFromBook(String autorEliminar, String contenidoActualTextArea) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
