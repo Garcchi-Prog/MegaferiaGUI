@@ -2,6 +2,7 @@ package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import controller.ProgramController;
+import controller.PublisherController;
 import controller.utils.Response;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -1457,9 +1458,9 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String nit = NITEditorialTextField.getText();
         String name = NombreEditorialTextField.getText();
         String address = DireccionEditorialTextField.getText();
-        String managerData = (String) GerenteEditorialComboBox.getSelectedItem();
+        String managerData = GerenteEditorialComboBox.getItemAt(GerenteEditorialComboBox.getSelectedIndex());
 
-        Response response = ProgramController.registerPublisher(nit, name, address, managerData);
+        Response response = PublisherController.register(nit, name, address, managerData);
 
         if (response.getStatus() >= 500) {
 
