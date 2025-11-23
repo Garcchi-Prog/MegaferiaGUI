@@ -290,7 +290,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                     .addComponent(CrearAutorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CrearNarradorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CrearGerenteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         OpcionesTabbedPane.addTab("Persona", jPanel3);
@@ -394,7 +394,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(46, 46, 46)
                 .addComponent(CrearEditorialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         OpcionesTabbedPane.addTab("Editorial", jPanel4);
@@ -708,7 +708,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                             .addComponent(NarradorLibroComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(DuracionLibroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(CrearLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -824,7 +824,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
                             .addComponent(IDStandsComprarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(226, 226, 226)
+                        .addGap(238, 238, 238)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
                             .addComponent(EditorialesComprarStandComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -894,7 +894,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(ConsultarEditorialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -949,7 +949,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(ConsultarPersonaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -1005,7 +1005,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(ConsultarStandButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
@@ -1075,7 +1075,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                     .addComponent(LibroSeleccionarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ConsultarLibroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -1227,7 +1227,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ConsultarAutoresMasLibrosButton)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         OpcionesTabbedPane.addTab("Consultas Adicionales", jPanel11);
@@ -1512,28 +1512,25 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearEditorialButtonActionPerformed
 
     private void AgregarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorLibroButtonActionPerformed
-        String autorSeleccionado = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String autorSeleccionado =  AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
 
         Response response = BookController.addTo(autorSeleccionado, contenidoActualTextArea);
+
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            if (contenidoActualTextArea.trim().isEmpty()) {
-                AutoresLibroTextArea.setText(autorSeleccionado + "\n");
-            } else {
-                AutoresLibroTextArea.setText(contenidoActualTextArea + autorSeleccionado + "\n");
-            }
+            AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_AgregarAutorLibroButtonActionPerformed
 
     private void EliminarAutorLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarAutorLibroButtonActionPerformed
-        String autorEliminar = (String) AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
+        String autorEliminar =  AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String contenidoActualTextArea = AutoresLibroTextArea.getText();
         String nuevoContenidoTextArea = "";
 
@@ -1549,11 +1546,12 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             String[] temp = contenidoActualTextArea.split("\n");
             for (String temp1 : temp) {
                 if (!temp1.trim().equals(autorEliminar.trim())) {
-                    nuevoContenidoTextArea += temp1 + "\n";
+                    nuevoContenidoTextArea += temp1;
                 }
             }
             AutoresLibroTextArea.setText(nuevoContenidoTextArea);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
         }
     }//GEN-LAST:event_EliminarAutorLibroButtonActionPerformed
 
@@ -1625,12 +1623,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            String nuevoContenido = (String) response.getObject();
-
-            StandComprarTextArea.setText(nuevoContenido);
-
+            StandComprarTextArea.setText(contenidoActualTextArea + "\n" + standSeleccionado);
             IDStandsComprarComboBox.setSelectedIndex(0);
-
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
@@ -1664,6 +1658,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+             EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
+            EditorialesComprarStandComboBox.setSelectedIndex(0);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
