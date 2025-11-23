@@ -4,23 +4,17 @@ import controller.utils.SortArray;
 import controller.utils.AuthorService;
 import controller.utils.Response;
 import controller.utils.SortByID;
-import controller.utils.SortByISBN;
 import controller.utils.Status;
 import java.util.ArrayList;
 import java.util.Collections;
-import model.Audiobook;
 
 import model.Megaferia;
 import model.Author;
-import model.Book;
-import model.DigitalBook;
 import model.Manager;
 import model.Narrator;
 import model.Person;
-import model.PrintedBook;
 
 import modelrepository.IAuthorRepository;
-import modelrepository.IBookRepository;
 import modelrepository.IManagerRepository;
 import modelrepository.INarratorRepository;
 

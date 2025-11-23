@@ -4,9 +4,8 @@
  */
 package controller;
 
-import controller.utils.AuthorService;
 import controller.utils.Response;
-import controller.utils.SortArray;
+import controller.utils.SortArrayByISBN;
 import controller.utils.SortByISBN;
 import controller.utils.Status;
 import java.util.ArrayList;
@@ -159,7 +158,12 @@ public class BookController {
     }
 
     public static ArrayList<Book> getData() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        IBookRepository bookRepo = Megaferia.getInstance().getBookRepository();
+        ArrayList<Book> allBooks = bookRepo.obtenerTodos();
+        
+        Collections.sort(allBooks, new SortByISBN());
+        
+        return allBooks;
     }
 
     public static ArrayList<Object[]> getBooksByAuthor(String autorData) {
@@ -198,7 +202,7 @@ public class BookController {
             }
         }
 
-        Collections.sort(books, new SortByISBN());
+        Collections.sort(books, new SortArrayByISBN());
 
         return books;
 
@@ -231,7 +235,7 @@ public class BookController {
             }
         }
         
-        Collections.sort(books, new SortByISBN());
+        Collections.sort(books, new SortArrayByISBN());
         
         return books;
     }
