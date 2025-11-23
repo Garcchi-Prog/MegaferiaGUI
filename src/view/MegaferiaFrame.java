@@ -437,11 +437,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         AutoresLibroComboBox.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AutoresLibroComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
-        AutoresLibroComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AutoresLibroComboBoxActionPerformed(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel14.setText("Tipo");
@@ -1779,10 +1774,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void GerenteEditorialComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenteEditorialComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GerenteEditorialComboBoxActionPerformed
-
-    private void AutoresLibroComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AutoresLibroComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AutoresLibroComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgEditorialComprarStandButton;
