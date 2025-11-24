@@ -133,6 +133,7 @@ public class StandController {
                     String[] tempId = publisher.split(" - ");
                     for (Stand stand : stands) {
                         if (stand.getId() == Long.parseLong(temp[0])) {
+                            stand.setCompra(true);
                             standComprado = stand;
                             stand.addPublisher(pubRepo.buscarPorNit(tempId[0]));
                             break;

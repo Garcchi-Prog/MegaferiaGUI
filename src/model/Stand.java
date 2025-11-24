@@ -36,6 +36,10 @@ public class Stand {
         return compra;
     }
 
+    public void setCompra(boolean compra) {
+        this.compra = compra;
+    }
+
     public int getPublisherQuantity() {
         return this.publishers.size();
     }
