@@ -54,30 +54,59 @@ public class StandController {
         }
     }
 
-    public static Response addToBuy(String standSeleccionado, String contenidoActualTextArea) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    
+    public static Response addToBuy(String stand, String contenido) {
+        try {
+            if (stand.trim().isEmpty() || stand.trim().equals("Seleccione uno...")) {
+                return new Response("Seleccione un stand.", Status.BAD_REQUEST);
+            }
+
+            if (contenido.trim().contains(stand)) {
+                return new Response("Ese stand ya fue agregado.", Status.BAD_REQUEST);
+            }
+
+            return new Response("Stand añadido exitosamente.", Status.OK);
+        } catch (Exception e) {
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
-    public static Response deleteFromBuy(String aEliminar, String contenidoActualTextArea) {
+    public static Response deleteFromBuy(String stand, String contenido) {
+        try {
+            if (stand.trim().isEmpty() || stand.trim().equals("Seleccione uno...")) {
+                return new Response("Debe seleccionar un stand.", Status.BAD_REQUEST);
+            }
 
-        throw new UnsupportedOperationException("Not supported yet.");
+            if (!contenido.trim().contains(stand.trim())) {
+                return new Response("Ese stand no ha sido añadido.", Status.BAD_REQUEST);
+            }
+
+            return new Response("Stand eliminado correctamente", Status.OK);
+
+        } catch (Exception e) {
+            return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
 
     }
 
     public static Response buy(String standsContent, String publishersContent) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        try {
+            if (standsContent.trim().isEmpty() || publishersContent.trim().isEmpty()){
+                return new Response("Agrege al menos un stand y una editorial.", Status.BAD_REQUEST);
+            }
+            
+            return new Response("Stands comprados exitosamente", Status.OK);
+        } catch (Exception e){
+            return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static ArrayList<Stand> getData() {
         IStandRepository standRepo = Megaferia.getInstance().getStandRepository();
         ArrayList<Stand> stands = standRepo.obtenerTodos();
-        
+
         Collections.sort(stands, new SortByStandID());
-        
+
         return stands;
     }
 

@@ -79,24 +79,45 @@ public class PublisherController {
         }
     }
 
-    public static Response addToBuy(String editorialSeleccionada, String contenidoActualTextArea) {
+    public static Response addToBuy(String editorial, String contenido) {
+        try {
+            if (editorial.trim().isEmpty() || editorial.trim().equals("Seleccione uno...")) {
+                return new Response("Seleccione una editorial.", Status.BAD_REQUEST);
+            }
 
-        throw new UnsupportedOperationException("Not supported yet.");
+            if (contenido.trim().contains(editorial)) {
+                return new Response("Esa editorial ya fue agregado.", Status.BAD_REQUEST);
+            }
 
+            return new Response("Editorial añadida exitosamente.", Status.OK);
+        } catch (Exception e) {
+            return new Response("Error interno del sistema", Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public static Response deleteFromBuy(String editorialAEliminar, String contenidoActualTextArea) {
+    public static Response deleteFromBuy(String editorial, String contenido) {
+        try {
+            if (editorial.trim().isEmpty() || editorial.trim().equals("Seleccione uno...")) {
+                return new Response("Debe seleccionar una editorial.", Status.BAD_REQUEST);
+            }
 
-        throw new UnsupportedOperationException("Not supported yet.");
+            if (!contenido.trim().contains(editorial.trim())) {
+                return new Response("Esa editorial no ha sido añadido.", Status.BAD_REQUEST);
+            }
 
+            return new Response("Editorial eliminada correctamente", Status.OK);
+
+        } catch (Exception e) {
+            return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public static ArrayList<Publisher> getData() {
         IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
         ArrayList<Publisher> publishers = pubRepo.obtenerTodos();
-        
+
         Collections.sort(publishers, new SortByNIT());
-        
+
         return publishers;
     }
 
