@@ -49,6 +49,10 @@ public class Publisher {
     public void addBook(Book book) {
         this.books.add(book);
     }
+
+    public ArrayList<Stand> getStands() {
+        return stands;
+    }
     
     public void addStand(Stand stand) {
         this.stands.add(stand);

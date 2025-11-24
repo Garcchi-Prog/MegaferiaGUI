@@ -10,7 +10,9 @@ import controller.utils.Status;
 import java.util.ArrayList;
 import java.util.Collections;
 import model.Megaferia;
+import model.Publisher;
 import model.Stand;
+import modelrepository.IPublisherRepository;
 import modelrepository.IStandRepository;
 
 /**
@@ -91,12 +93,60 @@ public class StandController {
 
     public static Response buy(String standsContent, String publishersContent) {
         try {
-            if (standsContent.trim().isEmpty() || publishersContent.trim().isEmpty()){
+            if (standsContent.trim().isEmpty() || publishersContent.trim().isEmpty()) {
                 return new Response("Agrege al menos un stand y una editorial.", Status.BAD_REQUEST);
             }
-            
+
+            IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
+            IStandRepository standRepo = Megaferia.getInstance().getStandRepository();
+            ArrayList<Stand> stands = standRepo.obtenerTodos();
+
+            String[] nuevosStands = standsContent.split("\n");
+            String[] nuevosPublishers = publishersContent.split("\n");
+            Stand standComprado = null;
+
+            for (String nuevoStand : nuevosStands) {
+                String[] temp = nuevoStand.split(" - $");
+
+                for (Stand stand : stands) {
+                    if (stand.getId() == Long.parseLong(temp[0])) {
+                        standComprado = stand;
+                        break;
+                    }
+                }
+
+                for (String publisher : nuevosPublishers) {
+                    String[] tempId = publisher.split(" - ");
+                    Publisher tempPub = pubRepo.buscarPorNit(tempId[0]);
+
+                    if (tempPub.getStands().contains(standComprado)) {
+                        return new Response("Uno o más stands ya le pertenecen a una de estas editoriales.", Status.BAD_REQUEST);
+                    }
+                }
+
+            }
+
+            for (String nuevoStand : nuevosStands) {
+                String[] temp = nuevoStand.split(" - $");
+
+                for (String publisher : nuevosPublishers) {
+                    String[] tempId = publisher.split(" - ");
+                    for (Stand stand : stands) {
+                        if (stand.getId() == Long.parseLong(temp[0])) {
+                            standComprado = stand;
+                            stand.addPublisher(pubRepo.buscarPorNit(tempId[0]));
+                            break;
+                        }
+                    }
+                    
+                    
+                    pubRepo.buscarPorNit(tempId[0]).addStand(standComprado);
+
+                }
+            }
+
             return new Response("Stands comprados exitosamente", Status.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
         }
     }
