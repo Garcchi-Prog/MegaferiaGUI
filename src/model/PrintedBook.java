@@ -16,13 +16,15 @@ public class PrintedBook extends Book {
         this.pages = pages;
         this.copies = copies;
     }
-
+    
+    @Override
     public int getPages() {
-        return pages;
+        return this.pages;
     }
-
+    
+    @Override
     public int getCopies() {
-        return copies;
+        return this.copies;
     }
     
 }

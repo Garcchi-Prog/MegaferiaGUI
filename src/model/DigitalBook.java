@@ -22,13 +22,15 @@ public class DigitalBook extends Book {
         this.hasHyperlink = true;
         this.hyperlink = hyperlink;
     }
-
+    
+    
     public boolean hasHyperlink() {
-        return hasHyperlink;
+        return this.hasHyperlink;
     }
     
+    @Override
     public String getHyperlink() {
-        return hyperlink;
+        return this.hyperlink;
     }
     
 }

@@ -1,12 +1,10 @@
-
 package model;
 
 import model.Author;
 import java.util.ArrayList;
 
-
 public abstract class Book {
-    
+
     protected String title;
     protected ArrayList<Author> authors;
     protected final String isbn;
@@ -23,7 +21,7 @@ public abstract class Book {
         this.format = format;
         this.value = value;
         this.publisher = publisher;
-        
+
         for (Author autor : this.authors) {
             autor.addBook(this);
         }
@@ -57,5 +55,24 @@ public abstract class Book {
     public Publisher getPublisher() {
         return publisher;
     }
+
+    public int getCopies() {
+        return 0;
+    }
+
+    public int getPages() {
+        return 0;
+    }
     
+    public String getHyperlink(){
+     return "N/A";
+    }
+    
+    public Narrator getNarrador() {
+        return null;
+    }
+    
+    public int getDuration() {
+        return 0;
+    }
 }

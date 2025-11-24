@@ -16,13 +16,15 @@ public class Audiobook extends Book {
         
         this.narrador.addBook(this);
     }
-
+    
+    @Override
     public int getDuration() {
-        return duration;
+        return this.duration;
     }
-
+    
+    @Override
     public Narrator getNarrador() {
-        return narrador;
+        return this.narrador;
     }
     
 }

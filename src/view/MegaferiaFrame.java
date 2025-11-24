@@ -1773,11 +1773,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             rowData[4] = book.getFormat();
             rowData[5] = book.getValue();
             rowData[6] = book.getPublisher();
-            //rowData[7] = book.getBookCount();
-            //rowData[8] = book.getBookCount();
-            //rowData[9] = book.getBookCount();
-            //rowData[10] = book.getBookCount();
-            //rowData[11] = book.getBookCount();
+            rowData[7] = book.getCopies();
+            rowData[8] = book.getPages();
+            rowData[9] = book.getHyperlink();
+            rowData[10] = book.getNarrador();
+            rowData[11] = book.getDuration();
 
             model.addRow(rowData);
         }
