@@ -7,6 +7,7 @@ package controller;
 import controller.utils.Response;
 import controller.utils.Status;
 import java.util.ArrayList;
+import java.util.Collections;
 import model.Megaferia;
 import model.Stand;
 import modelrepository.IStandRepository;
@@ -71,7 +72,12 @@ public class StandController {
     }
 
     public static ArrayList<Stand> getData() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IStandRepository standRepo = Megaferia.getInstance().getStandRepository();
+        ArrayList<Stand> stands = standRepo.obtenerTodos();
+        
+        Collections.sort(stands, new SortByStandID());
+        
+        return stands;
     }
 
 }
