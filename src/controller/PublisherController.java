@@ -5,8 +5,10 @@
 package controller;
 
 import controller.utils.Response;
+import controller.utils.SortByNIT;
 import controller.utils.Status;
 import java.util.ArrayList;
+import java.util.Collections;
 import model.Manager;
 import model.Megaferia;
 import model.Publisher;
@@ -90,7 +92,12 @@ public class PublisherController {
     }
 
     public static ArrayList<Publisher> getData() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        IPublisherRepository pubRepo = Megaferia.getInstance().getPublisherRepository();
+        ArrayList<Publisher> publishers = pubRepo.obtenerTodos();
+        
+        Collections.sort(publishers, new SortByNIT());
+        
+        return publishers;
     }
 
     public static ArrayList<Object[]> getNames() {
