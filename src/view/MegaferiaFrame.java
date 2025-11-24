@@ -1414,6 +1414,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else {
             Author nuevoAutor = (Author) response.getObject();
             AutoresLibroComboBox.addItem(nuevoAutor.getId() + " - " + nuevoAutor.getFullname());
+            AutorConsultaComboBox.addItem(nuevoAutor.getId() + " - " + nuevoAutor.getFullname());
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
@@ -1661,7 +1662,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = EditorialesComprarStandComboBox.getItemAt(EditorialesComprarStandComboBox.getSelectedIndex());
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
-        String nuevoContenidoTextArea = "";
+        
 
         Response response = PublisherController.deleteFromBuy(editorialAEliminar, contenidoActualTextArea);
 
