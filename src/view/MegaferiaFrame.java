@@ -1749,7 +1749,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             Object[] rowData = new Object[4];
             rowData[0] = stand.getId();
             rowData[1] = stand.getPrice();
-            //rowData[2] = stand.getComprado(); //
+            rowData[2] = stand.isCompra(); 
             rowData[3] = stand.getPublishers();
 
             model.addRow(rowData);
