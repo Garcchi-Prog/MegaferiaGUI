@@ -1785,7 +1785,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarAutorButtonActionPerformed
 
-        String autorData = (String) AutorConsultaComboBox.getSelectedItem();
+        String autorData = AutorConsultaComboBox.getItemAt(AutorConsultaComboBox.getSelectedIndex());
 
         ArrayList<Object[]> dataRows = BookController.getBooksByAuthor(autorData);
 
@@ -1799,7 +1799,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void ConsultarFormatoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarFormatoButtonActionPerformed
 
-        String searchFormat = (String) FormatoConsultaComboBox.getSelectedItem();
+        String searchFormat = FormatoConsultaComboBox.getItemAt(FormatoConsultaComboBox.getSelectedIndex());
 
         ArrayList<Object[]> dataRows = BookController.getBooksByFormat(searchFormat);
 
