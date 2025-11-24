@@ -1388,7 +1388,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else {
             Stand nuevoStand = (Stand) response.getObject();
             IDStandsComprarComboBox.addItem(nuevoStand.getId() + " - $" + nuevoStand.getPrice());
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             IDStandTextField.setText("");
@@ -1494,7 +1494,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             Publisher nuevaEditorial = (Publisher) response.getObject();
             EditorialLibroComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
             EditorialesComprarStandComboBox.addItem(nuevaEditorial.getNit() + " - " + nuevaEditorial.getName());
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             GerenteEditorialComboBox.setSelectedIndex(0);
@@ -1519,7 +1519,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -1554,7 +1554,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void CrearLibroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLibroButtonActionPerformed
 
         String title = TituloLibroTextField.getText();
-       
+
         String authorsContent = AutoresLibroTextArea.getText();
         String isbn = ISBNLibroTextField.getText();
         String valueStr = ValorLibroTextField.getText();
@@ -1562,7 +1562,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String copiesStr = EjemplaresLibroTextField.getText();
         String hyperlink = HipervinculoLibroTextField.getText();
         String durationStr = DuracionLibroTextField.getText();
-        
+
         String genre = GeneroLibroComboBox.getItemAt(GeneroLibroComboBox.getSelectedIndex());
         String authorData = AutoresLibroComboBox.getItemAt(AutoresLibroComboBox.getSelectedIndex());
         String format = FormatoLibroComboBox.getItemAt(FormatoLibroComboBox.getSelectedIndex());
@@ -1615,9 +1615,9 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             StandComprarTextArea.setText(contenidoActualTextArea + "\n" + standSeleccionado);
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-            
+
             IDStandsComprarComboBox.setSelectedIndex(0);
 
         }
@@ -1634,6 +1634,8 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
+            String nuevoContenido = (String) response.getObject();
+            StandComprarTextArea.setText(nuevoContenido);
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
@@ -1652,7 +1654,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
             EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
-            
+
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
             EditorialesComprarStandComboBox.setSelectedIndex(0);
@@ -1662,7 +1664,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = EditorialesComprarStandComboBox.getItemAt(EditorialesComprarStandComboBox.getSelectedIndex());
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
-        
 
         Response response = PublisherController.deleteFromBuy(editorialAEliminar, contenidoActualTextArea);
 
@@ -1671,11 +1672,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            
-            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-            
-            EditorialesComprarStandComboBox.setSelectedIndex(0);
 
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+            EditorialesComprarStandComboBox.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_ElEditorialComprarStandButtonActionPerformed
@@ -1750,7 +1750,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             Object[] rowData = new Object[4];
             rowData[0] = stand.getId();
             rowData[1] = stand.getPrice();
-            rowData[2] = stand.isCompra(); 
+            rowData[2] = stand.isCompra();
             rowData[3] = stand.getPublishers();
 
             model.addRow(rowData);
@@ -1766,7 +1766,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         for (Book book : dataRows) {
             Object[] rowData = new Object[12];
-            
+
             rowData[0] = book.getTitle();
             rowData[1] = book.getAuthors();
             rowData[2] = book.getIsbn();

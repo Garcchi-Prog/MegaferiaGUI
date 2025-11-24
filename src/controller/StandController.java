@@ -83,7 +83,21 @@ public class StandController {
                 return new Response("Ese stand no ha sido añadido.", Status.BAD_REQUEST);
             }
 
-            return new Response("Stand eliminado correctamente", Status.OK);
+            String idAEliminar = stand.split(" - ")[0]; 
+            String[] lineas = contenido.split("\n");
+            String nuevoContenido = "";
+
+            for (String linea : lineas) {
+                String idLinea = linea.split(" - ")[0]; 
+                if (!idLinea.trim().equals(idAEliminar.trim())) {
+                    if (!nuevoContenido.isEmpty()) {
+                        nuevoContenido += "\n";
+                    }
+                    nuevoContenido += linea;
+                }
+            }
+
+            return new Response( "Stand eliminado correctamente", Status.OK);
 
         } catch (Exception e) {
             return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
@@ -139,8 +153,7 @@ public class StandController {
                             break;
                         }
                     }
-                    
-                    
+
                     pubRepo.buscarPorNit(tempId[0]).addStand(standComprado);
 
                 }
