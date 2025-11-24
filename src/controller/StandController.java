@@ -120,7 +120,7 @@ public class StandController {
             Stand standComprado = null;
 
             for (String nuevoStand : nuevosStands) {
-                String[] temp = nuevoStand.split(" - $");
+                String[] temp = nuevoStand.split(" - ");
 
                 for (Stand stand : stands) {
                     if (stand.getId() == Long.parseLong(temp[0])) {
@@ -141,7 +141,7 @@ public class StandController {
             }
 
             for (String nuevoStand : nuevosStands) {
-                String[] temp = nuevoStand.split(" - $");
+                String[] temp = nuevoStand.split(" - ");
 
                 for (String publisher : nuevosPublishers) {
                     String[] tempId = publisher.split(" - ");

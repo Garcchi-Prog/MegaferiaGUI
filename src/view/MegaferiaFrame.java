@@ -1518,7 +1518,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            AutoresLibroTextArea.setText(contenidoActualTextArea + "\n" + autorSeleccionado);
+            AutoresLibroTextArea.setText(contenidoActualTextArea + autorSeleccionado + "\n");
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -1545,7 +1545,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                     nuevoContenidoTextArea += temp1;
                 }
             }
-            AutoresLibroTextArea.setText(nuevoContenidoTextArea);
+            AutoresLibroTextArea.setText(nuevoContenidoTextArea + "\n");
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
         }
@@ -1614,11 +1614,9 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            StandComprarTextArea.setText(contenidoActualTextArea + "\n" + standSeleccionado);
+            StandComprarTextArea.setText(contenidoActualTextArea + standSeleccionado + "\n");
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-            IDStandsComprarComboBox.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_AgregarStandComprarButtonActionPerformed
@@ -1626,6 +1624,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void EliminarStandComprarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarStandComprarButtonActionPerformed
         String standAEliminar = IDStandsComprarComboBox.getItemAt(IDStandsComprarComboBox.getSelectedIndex());
         String contenidoActualTextArea = StandComprarTextArea.getText();
+        String nuevoContenidoTextArea = "";
 
         Response response = StandController.deleteFromBuy(standAEliminar, contenidoActualTextArea);
 
@@ -1634,10 +1633,15 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            String nuevoContenido = (String) response.getObject();
-            StandComprarTextArea.setText(nuevoContenido);
+            String[] temp = contenidoActualTextArea.split("\n");
+            for (String temp1 : temp) {
+                if (!temp1.trim().equals(standAEliminar.trim())) {
+                    nuevoContenidoTextArea += temp1;
+                }
+            }
+            StandComprarTextArea.setText(nuevoContenidoTextArea + "\n");
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_EliminarStandComprarButtonActionPerformed
 
@@ -1653,17 +1657,16 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-            EditorialStandComprarTextArea.setText(contenidoActualTextArea + "\n" + editorialSeleccionada);
+            EditorialStandComprarTextArea.setText(contenidoActualTextArea + editorialSeleccionada + "\n");
 
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-            EditorialesComprarStandComboBox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_AgEditorialComprarStandButtonActionPerformed
 
     private void ElEditorialComprarStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElEditorialComprarStandButtonActionPerformed
         String editorialAEliminar = EditorialesComprarStandComboBox.getItemAt(EditorialesComprarStandComboBox.getSelectedIndex());
         String contenidoActualTextArea = EditorialStandComprarTextArea.getText();
+        String nuevoContenidoTextArea = "";
 
         Response response = PublisherController.deleteFromBuy(editorialAEliminar, contenidoActualTextArea);
 
@@ -1672,10 +1675,14 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         } else if (response.getStatus() >= 400) {
             JOptionPane.showMessageDialog(this, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
         } else {
-
+            String[] temp = contenidoActualTextArea.split("\n");
+            for (String temp1 : temp) {
+                if (!temp1.trim().equals(editorialAEliminar.trim())) {
+                    nuevoContenidoTextArea += temp1;
+                }
+            }
+            EditorialStandComprarTextArea.setText(nuevoContenidoTextArea + "\n");
             JOptionPane.showMessageDialog(this, response.getMessage(), "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-            EditorialesComprarStandComboBox.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_ElEditorialComprarStandButtonActionPerformed
