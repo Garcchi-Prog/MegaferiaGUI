@@ -83,13 +83,10 @@ public class StandController {
                 return new Response("Ese stand no ha sido añadido.", Status.BAD_REQUEST);
             }
 
-            String idAEliminar = stand.split(" - ")[0]; 
             String[] lineas = contenido.split("\n");
             String nuevoContenido = "";
-
             for (String linea : lineas) {
-                String idLinea = linea.split(" - ")[0]; 
-                if (!idLinea.trim().equals(idAEliminar.trim())) {
+                if (!linea.trim().equals(stand.trim())) {
                     if (!nuevoContenido.isEmpty()) {
                         nuevoContenido += "\n";
                     }
@@ -97,7 +94,7 @@ public class StandController {
                 }
             }
 
-            return new Response( "Stand eliminado correctamente", Status.OK);
+            return new Response("Stand eliminado correctamente", Status.OK);
 
         } catch (Exception e) {
             return new Response("Error interno: " + e.getMessage(), Status.INTERNAL_SERVER_ERROR);
@@ -161,6 +158,7 @@ public class StandController {
 
             return new Response("Stands comprados exitosamente", Status.OK);
         } catch (Exception e) {
+            
             return new Response("Error interno", Status.INTERNAL_SERVER_ERROR);
         }
     }

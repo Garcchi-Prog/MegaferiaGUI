@@ -105,6 +105,17 @@ public class PublisherController {
                 return new Response("Esa editorial no ha sido añadido.", Status.BAD_REQUEST);
             }
 
+            String[] lineas = contenido.split("\n");
+            String nuevoContenido = "";
+            for (String linea : lineas) {
+                if (!linea.trim().equals(editorial.trim())) {
+                    if (!nuevoContenido.isEmpty()) {
+                        nuevoContenido += "\n";
+                    }
+                    nuevoContenido += linea;
+                }
+            }
+
             return new Response("Editorial eliminada correctamente", Status.OK);
 
         } catch (Exception e) {
